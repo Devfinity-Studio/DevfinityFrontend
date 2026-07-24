@@ -11,7 +11,7 @@ export function Footer() {
             href="/"
             className="font-medium underline underline-offset-4"
           >
-            Devfinity
+            Heena & Devansh
           </Link>
           . The source code is available on{" "}
           <a
