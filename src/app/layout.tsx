@@ -95,6 +95,12 @@ export default function RootLayout({
   return (
     <html lang="en" className="scroll-smooth" data-scroll-behavior="smooth">
       <head>
+        {/* Ahrefs Analytics */}
+        <script
+          src="https://analytics.ahrefs.com/analytics.js"
+          data-key="hfZxB5X2kFg74set9raPsA"
+          async
+        />
         {/* Google Consent Mode v2 Default Initialization */}
         <script
           id="google-consent-mode-v2"
