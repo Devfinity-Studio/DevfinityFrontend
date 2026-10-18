@@ -13,6 +13,17 @@ interface CookiePreferences {
 
 const STORAGE_KEY = "devfinity_cookie_consent";
 
+function updateGtagConsent(preferences: CookiePreferences) {
+  if (typeof window !== "undefined" && typeof (window as unknown as { gtag?: (...args: unknown[]) => void }).gtag === "function") {
+    (window as unknown as { gtag: (...args: unknown[]) => void }).gtag("consent", "update", {
+      ad_storage: preferences.marketing ? "granted" : "denied",
+      ad_user_data: preferences.marketing ? "granted" : "denied",
+      ad_personalization: preferences.marketing ? "granted" : "denied",
+      analytics_storage: preferences.analytics ? "granted" : "denied",
+    });
+  }
+}
+
 export function CookieConsentBanner() {
   const [isVisible, setIsVisible] = useState(false);
   const [showCustomize, setShowCustomize] = useState(false);
@@ -23,7 +34,8 @@ export function CookieConsentBanner() {
     try {
       const stored = localStorage.getItem(STORAGE_KEY);
       if (stored) {
-        // Consent already recorded
+        const parsed: CookiePreferences = JSON.parse(stored);
+        updateGtagConsent(parsed);
         return;
       }
 
@@ -43,6 +55,7 @@ export function CookieConsentBanner() {
           timestamp: Date.now(),
         };
         localStorage.setItem(STORAGE_KEY, JSON.stringify(defaultConsent));
+        updateGtagConsent(defaultConsent);
         return;
       }
 
@@ -60,6 +73,7 @@ export function CookieConsentBanner() {
   const savePreferences = (preferences: CookiePreferences) => {
     try {
       localStorage.setItem(STORAGE_KEY, JSON.stringify(preferences));
+      updateGtagConsent(preferences);
     } catch {
       // Graceful fallback
     }

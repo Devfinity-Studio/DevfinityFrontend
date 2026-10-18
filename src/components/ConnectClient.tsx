@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useState, Suspense } from "react";
 import { Sparkles, Mail, MapPin, Copy, Check, MessageSquare, Phone } from "lucide-react";
 import { StudioContactForm } from "@/components/StudioContactForm";
 import { ParticleMeshCanvas } from "@/components/ParticleMeshCanvas";
@@ -93,7 +93,9 @@ export default function ConnectClient() {
           
           {/* Left Column: Studio Dynamic Form (7 cols) */}
           <div className="lg:col-span-7">
-            <StudioContactForm />
+            <Suspense fallback={<div className="h-96 rounded-3xl glass-card animate-pulse" />}>
+              <StudioContactForm />
+            </Suspense>
           </div>
 
           {/* Right Column: 3D Particle Mesh & Quick Contact (5 cols) */}

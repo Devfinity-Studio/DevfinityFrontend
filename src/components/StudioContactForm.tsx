@@ -5,7 +5,10 @@ import Link from "next/link";
 import confetti from "canvas-confetti";
 import { Send, CheckCircle2, Loader2, Sparkles, X, AlertCircle } from "lucide-react";
 
+import { useUtmCapture } from "@/hooks/useUtmCapture";
+
 export function StudioContactForm() {
+  const utm = useUtmCapture();
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [scope, setScope] = useState("Enterprise Platform");
@@ -62,7 +65,7 @@ export function StudioContactForm() {
     setIsSending(true);
 
     try {
-      // Dispatch API request asynchronously
+      // Dispatch API request asynchronously with captured UTM ad attribution
       fetch("/api/contact", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
@@ -71,6 +74,7 @@ export function StudioContactForm() {
           email: trimmedEmail,
           scopes: [scope],
           briefing: trimmedMessage,
+          ...utm,
         }),
       }).catch((err) => {
         console.warn("Dispatched contact intake notice:", err);

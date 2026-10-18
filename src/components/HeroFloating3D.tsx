@@ -5,6 +5,8 @@ import gsap from "gsap";
 import { useGSAP } from "@gsap/react";
 import { Code2, Cpu, ShieldCheck, Zap } from "lucide-react";
 
+import { Bespoke3DStudioCanvas } from "@/components/Bespoke3DStudioCanvas";
+
 export function HeroFloating3D() {
   const containerRef = useRef<HTMLDivElement>(null);
   const card1Ref = useRef<HTMLDivElement>(null);
@@ -88,34 +90,41 @@ export function HeroFloating3D() {
       ref={containerRef}
       onMouseMove={handleMouseMove}
       onMouseLeave={handleMouseLeave}
-      className="relative w-full max-w-4xl h-72 md:h-80 mx-auto mt-8 flex items-center justify-center select-none"
+      className="relative w-full max-w-4xl h-80 md:h-96 mx-auto mt-8 flex items-center justify-center select-none"
       style={{ perspective: "1200px" }}
     >
-      {/* Central Glassmorphic Dashboard Showcase Anchor */}
-      <div className="w-full max-w-2xl h-44 md:h-52 rounded-2xl glass-panel p-6 flex flex-col justify-between shadow-2xl shadow-blue-500/5 border border-white/80 relative z-10 transition-transform duration-300">
-        <div className="flex items-center justify-between border-b border-black/[0.06] pb-3">
+      {/* Central Glassmorphic Dashboard Showcase Anchor with Live 3D WebGL Canvas */}
+      <div className="w-full max-w-2xl h-56 md:h-64 rounded-3xl glass-panel p-5 flex flex-col justify-between shadow-2xl shadow-blue-500/5 border border-white/80 relative z-10 transition-transform duration-300 overflow-hidden">
+        <div className="flex items-center justify-between border-b border-black/[0.06] pb-2 z-10">
           <div className="flex items-center space-x-2">
             <div className="w-3 h-3 rounded-full bg-rose-400" />
             <div className="w-3 h-3 rounded-full bg-amber-400" />
             <div className="w-3 h-3 rounded-full bg-emerald-400" />
           </div>
           <span className="text-xs font-mono text-zinc-600 font-semibold tracking-wider uppercase">
-            devfinity.studio // runtime.tsx
+            devfinity.studio // 3d-core.tsx
           </span>
           <div className="w-3 h-3" />
         </div>
-        <div className="grid grid-cols-3 gap-4 my-auto">
-          <div className="p-3 rounded-xl bg-white/70 border border-black/[0.04] text-center">
-            <span className="text-xs font-mono text-zinc-600 block">Latency</span>
-            <span className="text-xl font-extrabold text-blue-600 font-mono">&lt; 45ms</span>
+
+        {/* Real-time 3D WebGL Canvas Layer */}
+        <div className="absolute inset-0 pt-8 pb-12 flex items-center justify-center opacity-90 hover:opacity-100 transition-opacity">
+          <Bespoke3DStudioCanvas />
+        </div>
+
+        {/* Floating Mini Overlay Metrics */}
+        <div className="grid grid-cols-3 gap-3 my-auto z-10 pointer-events-none mt-auto">
+          <div className="p-2 rounded-xl bg-white/85 backdrop-blur-md border border-black/[0.06] text-center shadow-xs">
+            <span className="text-[10px] font-mono text-zinc-600 block font-semibold uppercase">Latency</span>
+            <span className="text-base md:text-lg font-extrabold text-blue-600 font-mono">&lt; 15ms</span>
           </div>
-          <div className="p-3 rounded-xl bg-white/70 border border-black/[0.04] text-center">
-            <span className="text-xs font-mono text-zinc-600 block">Integrity</span>
-            <span className="text-xl font-extrabold text-purple-600 font-mono">100%</span>
+          <div className="p-2 rounded-xl bg-white/85 backdrop-blur-md border border-black/[0.06] text-center shadow-xs">
+            <span className="text-[10px] font-mono text-zinc-600 block font-semibold uppercase">Integrity</span>
+            <span className="text-base md:text-lg font-extrabold text-purple-600 font-mono">100%</span>
           </div>
-          <div className="p-3 rounded-xl bg-white/70 border border-black/[0.04] text-center">
-            <span className="text-xs font-mono text-zinc-600 block">Deploy Rate</span>
-            <span className="text-xl font-extrabold text-emerald-600 font-mono">0.02s</span>
+          <div className="p-2 rounded-xl bg-white/85 backdrop-blur-md border border-black/[0.06] text-center shadow-xs">
+            <span className="text-[10px] font-mono text-zinc-600 block font-semibold uppercase">Deploy</span>
+            <span className="text-base md:text-lg font-extrabold text-emerald-600 font-mono">0.02s</span>
           </div>
         </div>
       </div>

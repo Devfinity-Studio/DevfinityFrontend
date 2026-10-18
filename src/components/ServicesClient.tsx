@@ -9,6 +9,7 @@ import { StatCounters } from "@/components/StatCounters";
 import { MagneticButton } from "@/components/MagneticButton";
 import { TrustBanner } from "@/components/TrustBanner";
 import { AccordionFAQ, servicesFAQs } from "@/components/AccordionFAQ";
+import { CommunityLeadershipSection } from "@/components/CommunityLeadershipSection";
 
 export default function ServicesClient() {
   const containerRef = useRef<HTMLDivElement>(null);
@@ -172,6 +173,9 @@ export default function ServicesClient() {
           </div>
         </div>
       </section>
+
+      {/* Community Leadership & Real-World Provenance Section */}
+      <CommunityLeadershipSection />
 
       {/* Frequently Answered Questions (Services AIO Schema) */}
       <section aria-label="Services Frequently Asked Questions" className="w-full py-20 px-4 md:px-8 bg-zinc-50/60 border-t border-black/[0.04]">

@@ -8,6 +8,11 @@ const contactSchema = z.object({
   capacity: z.string().optional(),
   briefing: z.string().optional(),
   message: z.string().optional(),
+  utm_source: z.string().optional(),
+  utm_medium: z.string().optional(),
+  utm_campaign: z.string().optional(),
+  utm_term: z.string().optional(),
+  utm_content: z.string().optional(),
 });
 
 export async function POST(req: Request) {
@@ -23,7 +28,7 @@ export async function POST(req: Request) {
       );
     }
 
-    const { name, email, scopes, capacity, briefing, message } = validatedData.data;
+    const { name, email, scopes, capacity, briefing, message, utm_source, utm_medium, utm_campaign, utm_term, utm_content } = validatedData.data;
 
     // Accept either 'message' or 'briefing'
     const contentMessage = (briefing || message || "").trim();

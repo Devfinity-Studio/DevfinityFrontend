@@ -95,6 +95,23 @@ export default function RootLayout({
   return (
     <html lang="en" className="scroll-smooth" data-scroll-behavior="smooth">
       <head>
+        {/* Google Consent Mode v2 Default Initialization */}
+        <script
+          id="google-consent-mode-v2"
+          dangerouslySetInnerHTML={{
+            __html: `
+              window.dataLayer = window.dataLayer || [];
+              function gtag(){dataLayer.push(arguments);}
+              gtag('consent', 'default', {
+                'ad_storage': 'denied',
+                'ad_user_data': 'denied',
+                'ad_personalization': 'denied',
+                'analytics_storage': 'denied',
+                'wait_for_update': 500
+              });
+            `,
+          }}
+        />
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{
@@ -102,15 +119,17 @@ export default function RootLayout({
               "@context": "https://schema.org",
               "@graph": [
                 {
-                  "@type": "ProfessionalService",
+                  "@type": ["LocalBusiness", "ProfessionalService", "Organization"],
                   "@id": "https://devfinity.dev/#agency",
                   "name": "Devfinity Studio",
+                  "alternateName": "Devfinity Digital Agency",
                   "url": "https://devfinity.dev",
                   "image": "https://devfinity.dev/devfinity.png",
                   "address": {
                     "@type": "PostalAddress",
                     "addressLocality": "Vadodara",
                     "addressRegion": "Gujarat",
+                    "postalCode": "390001",
                     "addressCountry": "IN"
                   },
                   "geo": {
@@ -121,11 +140,13 @@ export default function RootLayout({
                   "founders": [
                     {
                       "@type": "Person",
-                      "name": "Heena"
+                      "name": "Devansh",
+                      "jobTitle": "Co-Founder & Principal Full-Stack Engineer"
                     },
                     {
                       "@type": "Person",
-                      "name": "Devansh"
+                      "name": "Heena",
+                      "jobTitle": "Co-Founder & Lead Systems Architect"
                     }
                   ],
                   "priceRange": "$$$$",
@@ -137,7 +158,9 @@ export default function RootLayout({
                     "https://en.wikipedia.org/wiki/User_interface_design",
                     "https://en.wikipedia.org/wiki/Next.js",
                     "https://en.wikipedia.org/wiki/Enterprise_resource_planning",
-                    "https://en.wikipedia.org/wiki/PostgreSQL"
+                    "https://en.wikipedia.org/wiki/PostgreSQL",
+                    "Aerospace Telemetry",
+                    "Cybersecurity Protocols"
                   ],
                   "sameAs": [
                     "https://github.com",

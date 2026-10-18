@@ -24,6 +24,18 @@ export default function sitemap(): MetadataRoute.Sitemap {
       priority: 0.9,
     },
     {
+      url: `${baseUrl}/insights`,
+      lastModified,
+      changeFrequency: "weekly",
+      priority: 0.9,
+    },
+    {
+      url: `${baseUrl}/labs`,
+      lastModified,
+      changeFrequency: "weekly",
+      priority: 0.85,
+    },
+    {
       url: `${baseUrl}/contact`,
       lastModified,
       changeFrequency: "monthly",
@@ -78,5 +90,16 @@ export default function sitemap(): MetadataRoute.Sitemap {
     priority: 0.85,
   }));
 
-  return [...staticRoutes, ...caseStudies];
+  const insightPages: MetadataRoute.Sitemap = [
+    "migrating-enterprise-systems-t3-kinde",
+    "high-performance-nextjs-drizzle",
+    "aerospace-telemetry-def-space-cybersecurity",
+  ].map((slug) => ({
+    url: `${baseUrl}/insights/${slug}`,
+    lastModified,
+    changeFrequency: "monthly",
+    priority: 0.85,
+  }));
+
+  return [...staticRoutes, ...caseStudies, ...insightPages];
 }
