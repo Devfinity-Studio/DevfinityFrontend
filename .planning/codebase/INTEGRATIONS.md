@@ -24,7 +24,7 @@
 
 ### Vercel Platform & Deployment
 - **Integration Points:** [`.vercel/`](file:///e:/work/DevfinityFrontend/.vercel/) metadata directory and [`.env.local`](file:///e:/work/DevfinityFrontend/.env.local) variables (`VERCEL_OIDC_TOKEN`).
-- **Production URL:** `https://devfinity.dev`
+- **Production URL:** `https://devfinity.net`
 
 ### Google Fonts / Next.js Font Optimization
 - **Font:** `JetBrains_Mono` imported via `next/font/google` in [`src/app/layout.tsx`](file:///e:/work/DevfinityFrontend/src/app/layout.tsx).
@@ -37,7 +37,7 @@
 ### Schema.org Microdata & JSON-LD
 1. **ProfessionalService & WebPage Entity Graph:**
    - **Implemented In:** [`src/app/layout.tsx`](file:///e:/work/DevfinityFrontend/src/app/layout.tsx)
-   - **ID:** `https://devfinity.dev/#agency`
+   - **ID:** `https://devfinity.net/#agency`
    - **Attributes:** Name (`Devfinity`), GeoCoordinates (`22.3072, 73.1812`), PostalAddress (Vadodara, Gujarat, IN), Wikipedia knowledge associations (`TypeScript`, `ERP`, `Web development`, `ORM`, `UI design`).
 2. **FAQPage Entity Graph:**
    - **Implemented In:** [`src/components/AccordionFAQ.tsx`](file:///e:/work/DevfinityFrontend/src/components/AccordionFAQ.tsx)

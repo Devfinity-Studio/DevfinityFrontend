@@ -40,7 +40,7 @@ export default function PrivacyPage() {
           1. Overview &amp; Data Controller
         </h2>
         <p className="text-zinc-700 leading-relaxed text-sm md:text-base">
-          This Privacy Policy details how <strong>Devfinity Studio</strong> (&quot;Devfinity&quot;, &quot;we&quot;, &quot;us&quot;, or &quot;our&quot;) collects, processes, and protects your information when you visit our website (<code>devfinity.dev</code>), interact with our intake terminals, or contract our technical engineering services.
+          This Privacy Policy details how <strong>Devfinity Studio</strong> (&quot;Devfinity&quot;, &quot;we&quot;, &quot;us&quot;, or &quot;our&quot;) collects, processes, and protects your information when you visit our website (<code>devfinity.net</code>), interact with our intake terminals, or contract our technical engineering services.
         </p>
         <p className="text-zinc-700 leading-relaxed text-sm md:text-base">
           Devfinity acts as the Data Controller under the General Data Protection Regulation (GDPR) and applicable data privacy statutes for personal data collected through this website.
@@ -90,7 +90,7 @@ export default function PrivacyPage() {
         <p className="text-zinc-700 leading-relaxed text-sm md:text-base">
           You hold the unconditional right to request the complete deletion and erasure of your personal data from Devfinity&apos;s records at any time (&quot;Right to be Forgotten&quot;).
         </p>
-        
+
         <div className="p-6 rounded-2xl bg-zinc-50 border border-zinc-200 space-y-3">
           <h3 className="font-bold text-zinc-900 text-base">How to Submit a Data Erasure Request:</h3>
           <p className="text-xs md:text-sm text-zinc-600 leading-relaxed">

@@ -55,7 +55,7 @@ export default async function Image({ params }: { params: Promise<{ slug: string
                 Devfinity Studio
               </span>
               <span style={{ fontSize: "12px", fontFamily: "monospace", color: "#64748B", textTransform: "uppercase" }}>
-                devfinity.dev // insights
+                devfinity.net // insights
               </span>
             </div>
           </div>

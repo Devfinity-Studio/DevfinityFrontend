@@ -10,7 +10,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: "Devfinity Labs | Open Source & Hardware Experiments",
     description: "Hardware IoT bridges, open-source packages, and digital concept illustrations by Devfinity.",
-    url: "https://devfinity.dev/labs",
+    url: "https://devfinity.net/labs",
   },
 };
 

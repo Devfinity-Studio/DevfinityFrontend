@@ -1,7 +1,7 @@
 import type { MetadataRoute } from "next";
 
 export default function sitemap(): MetadataRoute.Sitemap {
-  const baseUrl = "https://devfinity.dev";
+  const baseUrl = "https://devfinity.net";
   const lastModified = new Date();
 
   const staticRoutes: MetadataRoute.Sitemap = [

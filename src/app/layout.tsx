@@ -20,7 +20,7 @@ const jetbrainsMono = JetBrains_Mono({
 });
 
 export const metadata: Metadata = {
-  metadataBase: new URL("https://devfinity.dev"),
+  metadataBase: new URL("https://devfinity.net"),
   title: {
     default: "Devfinity Studio | Custom Web Development & Enterprise Architectures",
     template: "%s | Devfinity Studio",
@@ -45,7 +45,7 @@ export const metadata: Metadata = {
   openGraph: {
     type: "website",
     locale: "en_US",
-    url: "https://devfinity.dev",
+    url: "https://devfinity.net",
     siteName: "Devfinity Studio",
     title: "Devfinity Studio | Custom Web Development & Enterprise Architectures",
     description: "Ultra-modern web development studio engineering interactive digital experiences, type-safe full-stack platforms, and bespoke software architectures.",
@@ -120,11 +120,11 @@ export default function RootLayout({
               "@graph": [
                 {
                   "@type": ["LocalBusiness", "ProfessionalService", "Organization"],
-                  "@id": "https://devfinity.dev/#agency",
+                  "@id": "https://devfinity.net/#agency",
                   "name": "Devfinity Studio",
                   "alternateName": "Devfinity Digital Agency",
-                  "url": "https://devfinity.dev",
-                  "image": "https://devfinity.dev/devfinity.png",
+                  "url": "https://devfinity.net",
+                  "image": "https://devfinity.net/devfinity.png",
                   "address": {
                     "@type": "PostalAddress",
                     "addressLocality": "Vadodara",
@@ -170,11 +170,11 @@ export default function RootLayout({
                 },
                 {
                   "@type": "WebPage",
-                  "@id": "https://devfinity.dev/#webpage",
-                  "url": "https://devfinity.dev",
+                  "@id": "https://devfinity.net/#webpage",
+                  "url": "https://devfinity.net",
                   "name": "Devfinity Studio | Creative Web Development & Digital Experiences",
-                  "isPartOf": { "@id": "https://devfinity.dev/#website" },
-                  "about": { "@id": "https://devfinity.dev/#agency" }
+                  "isPartOf": { "@id": "https://devfinity.net/#website" },
+                  "about": { "@id": "https://devfinity.net/#agency" }
                 }
               ]
             })

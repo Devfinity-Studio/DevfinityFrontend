@@ -10,7 +10,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: "Technical Insights & System Architectures | Devfinity Studio",
     description: "Deep-dives into T3 stack enterprise migrations, Drizzle ORM workflows, and aerospace telemetry protocols.",
-    url: "https://devfinity.dev/insights",
+    url: "https://devfinity.net/insights",
   },
 };
 

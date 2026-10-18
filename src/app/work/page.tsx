@@ -10,7 +10,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: "Enterprise Production Deployments & Architectural Case Studies | Devfinity Studio",
     description: "Real-world engineering case studies: AsmeePharma, Virat ShivShakti ERP, and Rustechnet platforms.",
-    url: "https://devfinity.dev/work",
+    url: "https://devfinity.net/work",
   },
 };
 

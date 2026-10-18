@@ -102,7 +102,7 @@ export async function generateMetadata({
     openGraph: {
       title: `${project.title} Architectural Case Study | Devfinity Studio`,
       description: project.description,
-      url: `https://devfinity.dev/projects/${id}`,
+      url: `https://devfinity.net/projects/${id}`,
       type: "article",
     },
   };
@@ -151,7 +151,7 @@ export default async function ProjectPage({
     "publisher": {
       "@type": "Organization",
       "name": "Devfinity Studio",
-      "url": "https://devfinity.dev"
+      "url": "https://devfinity.net"
     },
     "datePublished": "2026-09-15T00:00:00Z",
     "dateModified": "2026-10-18T00:00:00Z"
@@ -239,7 +239,7 @@ export default async function ProjectPage({
             <h3 className="font-extrabold text-lg text-zinc-900 tracking-tight border-b border-black/[0.06] pb-3">
               Architectural Specifications
             </h3>
-            
+
             <dl className="space-y-4 text-sm font-sans">
               <div>
                 <dt className="text-xs font-mono text-zinc-600 uppercase font-semibold">Client Organization</dt>

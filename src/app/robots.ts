@@ -24,7 +24,7 @@ export default function robots(): MetadataRoute.Robots {
         disallow: ["/api/"],
       },
     ],
-    sitemap: "https://devfinity.dev/sitemap.xml",
-    host: "https://devfinity.dev",
+    sitemap: "https://devfinity.net/sitemap.xml",
+    host: "https://devfinity.net",
   };
 }

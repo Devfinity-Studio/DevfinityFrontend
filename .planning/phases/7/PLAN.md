@@ -42,7 +42,7 @@ Upgrade the Devfinity Next.js web application to achieve top rankings across tra
     - `[MODIFY]` [`src/app/connect/page.tsx`](file:///e:/work/DevfinityFrontend/src/app/connect/page.tsx)
     - `[MODIFY]` [`src/app/projects/[id]/page.tsx`](file:///e:/work/DevfinityFrontend/src/app/projects/[id]/page.tsx)
   - **Details:**
-    - Set `metadataBase: new URL("https://devfinity.dev")` in `src/app/layout.tsx`.
+    - Set `metadataBase: new URL("https://devfinity.net")` in `src/app/layout.tsx`.
     - Export dynamic `generateMetadata` in `src/app/projects/[id]/page.tsx` for all case studies with targeted titles, descriptions, and article OpenGraph types.
     - Ensure each page specifies `alternates: { canonical: "..." }`.
   - **Verification:** `pnpm exec tsc --noEmit`
@@ -54,7 +54,7 @@ Upgrade the Devfinity Next.js web application to achieve top rankings across tra
     - `[NEW]` [`src/app/robots.ts`](file:///e:/work/DevfinityFrontend/src/app/robots.ts)
   - **Details:**
     - `sitemap.ts`: Returns full `MetadataRoute.Sitemap` array indexing `/`, `/services`, `/work`, `/contact`, `/projects/asmee-pharma`, `/projects/virat-shivshakti-erp`, `/projects/rustechnet`, `/privacy`, `/terms`, `/refund`, `/cookies`, `/legal` with prioritized weights and last modified timestamps.
-    - `robots.ts`: Returns `MetadataRoute.Robots` granting crawl access to standard and AI user agents (`Googlebot`, `Bingbot`, `GPTBot`, `ClaudeBot`, `PerplexityBot`), linking directly to `https://devfinity.dev/sitemap.xml`.
+    - `robots.ts`: Returns `MetadataRoute.Robots` granting crawl access to standard and AI user agents (`Googlebot`, `Bingbot`, `GPTBot`, `ClaudeBot`, `PerplexityBot`), linking directly to `https://devfinity.net/sitemap.xml`.
   - **Verification:** `pnpm exec tsc --noEmit`
 
 - [x] **Task 7-01-04: Core Web Vitals Image & LCP Optimization**

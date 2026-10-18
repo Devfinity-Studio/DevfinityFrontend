@@ -39,7 +39,7 @@ export default function TermsPage() {
           1. Acceptance of Terms
         </h2>
         <p className="text-zinc-700 leading-relaxed text-sm md:text-base">
-          By accessing Devfinity Studio&apos;s website (<code>devfinity.dev</code>), executing a project blueprint, or engaging our engineering team, you acknowledge that you have read, understood, and agreed to be bound by these Terms of Service. If you are entering into this agreement on behalf of a corporate entity, you represent that you hold valid authority to bind that entity.
+          By accessing Devfinity Studio&apos;s website (<code>devfinity.net</code>), executing a project blueprint, or engaging our engineering team, you acknowledge that you have read, understood, and agreed to be bound by these Terms of Service. If you are entering into this agreement on behalf of a corporate entity, you represent that you hold valid authority to bind that entity.
         </p>
       </section>
 

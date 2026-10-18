@@ -24,14 +24,14 @@
 In Next.js App Router, using `metadataBase` in root `layout.tsx` guarantees that all relative OpenGraph image and canonical paths resolve into absolute URLs:
 ```ts
 export const metadata: Metadata = {
-  metadataBase: new URL("https://devfinity.dev"),
+  metadataBase: new URL("https://devfinity.net"),
   alternates: {
     canonical: "/",
   },
   openGraph: {
     title: "Devfinity Studio | Creative Web Development & Digital Experiences",
     description: "Ultra-modern web development studio engineering interactive digital experiences, type-safe full-stack platforms, and bespoke software architectures.",
-    url: "https://devfinity.dev",
+    url: "https://devfinity.net",
     siteName: "Devfinity Studio",
     locale: "en_US",
     type: "website",
@@ -81,7 +81,7 @@ export async function generateMetadata({ params }: { params: Promise<{ id: strin
 
 Next.js provides native `sitemap.ts` and `robots.ts` in `src/app/`:
 - **`src/app/sitemap.ts`**: Enumerates static routes (`/`, `/services`, `/work`, `/contact`, `/privacy`, `/terms`, `/refund`, `/cookies`, `/legal`) and dynamic case study routes (`/projects/asmee-pharma`, `/projects/virat-shivshakti-erp`, `/projects/rustechnet`).
-- **`src/app/robots.ts`**: Defines crawl permissions, specifically welcoming Googlebot, Bingbot, GPTBot, ClaudeBot, and PerplexityBot, while referencing `https://devfinity.dev/sitemap.xml`.
+- **`src/app/robots.ts`**: Defines crawl permissions, specifically welcoming Googlebot, Bingbot, GPTBot, ClaudeBot, and PerplexityBot, while referencing `https://devfinity.net/sitemap.xml`.
 
 ---
 

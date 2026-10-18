@@ -10,7 +10,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: "Devfinity | Custom Web Development & Type-Safe Enterprise Architectures",
     description: "Bespoke full-stack web application engineering for complex corporate infrastructures.",
-    url: "https://devfinity.dev",
+    url: "https://devfinity.net",
   },
 };
 

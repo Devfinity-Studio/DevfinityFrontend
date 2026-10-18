@@ -10,7 +10,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: "Initialize System Deployment | Custom Technical Consultation",
     description: "Submit your software infrastructure blueprints to Devfinity's intake terminal.",
-    url: "https://devfinity.dev/connect",
+    url: "https://devfinity.net/connect",
   },
 };
 

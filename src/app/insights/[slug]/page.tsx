@@ -33,7 +33,7 @@ export async function generateMetadata({
     openGraph: {
       title: `${article.title} | Devfinity Studio`,
       description: article.summary,
-      url: `https://devfinity.dev/insights/${slug}`,
+      url: `https://devfinity.net/insights/${slug}`,
       type: "article",
       publishedTime: article.publishDate,
       modifiedTime: article.lastUpdated,
@@ -70,8 +70,8 @@ export default async function InsightArticlePage({
     "publisher": {
       "@type": "Organization",
       "name": "Devfinity Studio",
-      "url": "https://devfinity.dev",
-      "logo": "https://devfinity.dev/devfinity.png",
+      "url": "https://devfinity.net",
+      "logo": "https://devfinity.net/devfinity.png",
     },
   };
 

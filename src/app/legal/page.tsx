@@ -55,7 +55,7 @@ export default function LegalNoticePage() {
             </div>
             <div>
               <span className="text-xs font-mono text-zinc-500 uppercase block">Primary Domain</span>
-              <span className="font-mono text-blue-600 font-semibold">https://devfinity.dev</span>
+              <span className="font-mono text-blue-600 font-semibold">https://devfinity.net</span>
             </div>
           </div>
         </div>

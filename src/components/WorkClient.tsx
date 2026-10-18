@@ -38,7 +38,7 @@ export default function WorkClient() {
       { "@type": "Person", "name": "Heena", "jobTitle": "Lead Systems Architect" },
       { "@type": "Person", "name": "Devansh", "jobTitle": "Principal Full-Stack Engineer" }
     ],
-    "publisher": { "@type": "Organization", "name": "Devfinity Studio", "url": "https://devfinity.dev" },
+    "publisher": { "@type": "Organization", "name": "Devfinity Studio", "url": "https://devfinity.net" },
     "datePublished": "2026-09-15T00:00:00Z",
     "dateModified": "2026-10-18T00:00:00Z"
   };
@@ -49,7 +49,7 @@ export default function WorkClient() {
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(erpSchema) }}
       />
-      
+
       {/* Hero Section */}
       <section aria-labelledby="work-hero-title" className="relative pt-24 pb-16 md:pt-32 md:pb-20 px-4 md:px-8 text-center overflow-hidden">
         <div className="container mx-auto max-w-4xl space-y-6">
@@ -78,7 +78,7 @@ export default function WorkClient() {
       {/* Deep Dive Case Study */}
       <section aria-labelledby="case-study-heading" className="w-full py-24 px-4 md:px-8 relative z-10">
         <article className="container mx-auto max-w-5xl glass-panel rounded-3xl p-8 md:p-14 border border-white/80 shadow-2xl space-y-10">
-          
+
           <header className="space-y-4 border-b border-black/[0.06] pb-8">
             <span className="text-xs font-mono font-bold uppercase px-3 py-1 rounded-full bg-emerald-50 text-emerald-600 border border-emerald-200 inline-block">
               Featured Case Study
@@ -112,7 +112,7 @@ export default function WorkClient() {
             <h3 className="text-xl font-bold uppercase text-blue-600 font-mono tracking-tight">
               Architectural Metric Matrix
             </h3>
-            
+
             <div className="overflow-x-auto rounded-2xl border border-black/[0.06]">
               <table className="w-full text-left border-collapse text-sm md:text-base font-sans">
                 <thead>

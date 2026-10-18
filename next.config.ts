@@ -28,7 +28,7 @@ const securityHeaders = [
       "script-src 'self' 'unsafe-eval' 'unsafe-inline' https://www.googletagmanager.com https://va.vercel-scripts.com",
       "style-src 'self' 'unsafe-inline' https://fonts.googleapis.com",
       "font-src 'self' https://fonts.gstatic.com data:",
-      "img-src 'self' data: blob: https://www.google-analytics.com https://*.google.com https://devfinity.dev",
+      "img-src 'self' data: blob: https://www.google-analytics.com https://*.google.com https://devfinity.net",
       "connect-src 'self' https://www.google-analytics.com https://region1.google-analytics.com https://vitals.vercel-insights.com",
       "frame-ancestors 'none'",
     ].join("; "),
