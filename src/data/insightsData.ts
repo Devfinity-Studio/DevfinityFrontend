@@ -1,6 +1,7 @@
 export interface InsightArticle {
   slug: string;
   title: string;
+  metaTitle?: string;
   subtitle: string;
   category: string;
   readTime: string;
@@ -29,6 +30,7 @@ export const insightsArticles: InsightArticle[] = [
   {
     slug: "migrating-enterprise-systems-t3-kinde",
     title: "Migrating Enterprise Systems: Why We Choose the T3 Stack & Kinde Auth Over Vite",
+    metaTitle: "Migrating Enterprise Systems to T3 Stack | Devfinity",
     subtitle: "A detailed engineering post-mortem replacing uncoordinated spreadsheets and client-only SPAs with server components, Drizzle ORM, and granular RBAC.",
     category: "Enterprise Architecture",
     readTime: "7 min read",
@@ -91,6 +93,7 @@ export async function FacilityInventoryLedger({ facilityId }: { facilityId: stri
   {
     slug: "high-performance-nextjs-drizzle",
     title: "High-Performance Workflows with Next.js, TypeScript, and Drizzle ORM",
+    metaTitle: "Next.js & Drizzle ORM Performance Guide | Devfinity",
     subtitle: "How compile-time schema safety and deep PostgreSQL indexing eliminate runtime crashes and keep transactional queries under 40ms.",
     category: "Database Engineering",
     readTime: "6 min read",
@@ -152,6 +155,7 @@ export const insertAuditLogSchema = createInsertSchema(auditLogs);`,
   {
     slug: "aerospace-telemetry-def-space-cybersecurity",
     title: "Mission-Critical Telemetry & Aerospace Cybersecurity: Lessons from the Def-Space Internship",
+    metaTitle: "Aerospace Telemetry & Cybersecurity | Devfinity Studio",
     subtitle: "Applying high-reliability rocketry and UAV telemetry protocols to modern enterprise full-stack systems and defense-grade AI infrastructure.",
     category: "Aerospace & High-Reliability Systems",
     readTime: "9 min read",

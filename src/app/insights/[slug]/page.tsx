@@ -27,13 +27,15 @@ export async function generateMetadata({
   const metaDesc = article.metaDescription || article.summary;
 
   return {
-    title: `${article.title}`,
+    title: article.metaTitle
+      ? { absolute: article.metaTitle }
+      : `${article.title}`,
     description: metaDesc,
     alternates: {
       canonical: `/insights/${slug}`,
     },
     openGraph: {
-      title: `${article.title} | Devfinity Studio`,
+      title: article.metaTitle || `${article.title} | Devfinity Studio`,
       description: metaDesc,
       url: `https://devfinity.net/insights/${slug}`,
       type: "article",

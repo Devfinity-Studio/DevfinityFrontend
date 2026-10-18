@@ -94,13 +94,13 @@ export async function generateMetadata({
   };
 
   return {
-    title: `${project.title} Architectural Case Study`,
+    title: `${project.title} Case Study`,
     description: project.description,
     alternates: {
       canonical: `/projects/${id}`,
     },
     openGraph: {
-      title: `${project.title} Architectural Case Study | Devfinity Studio`,
+      title: `${project.title} Case Study | Devfinity Studio`,
       description: project.description,
       url: `https://devfinity.net/projects/${id}`,
       type: "article",
