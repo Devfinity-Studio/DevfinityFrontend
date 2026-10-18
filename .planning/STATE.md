@@ -1,14 +1,13 @@
 # Project State
 
 ## Current Status
-- Phase 5: Ultra-Modern Studio Redesign (Multi-Page Light Theme & Creative Motion) fully executed and verified.
-- Production build passed (`next build --turbopack`).
-- TypeScript compile check passed with 0 errors (`tsc --noEmit`).
-- All 5 waves completed: Light Mode Plus theme tokens, frosted navbar, CustomCursor, AmbientMesh, 3D Hero floating blocks, 3x2 Bento grid, Process light trail, Stat counters, Confetti form, and 3D Particle Mesh canvas.
+- Phase 5: Ultra-Modern Studio Redesign completed and verified.
+- Phase 6: Global Compliance, Accessibility & Ethical UI Audit added to ROADMAP.md.
 
 ## Accumulated Context
 ### Roadmap Evolution
 - Phase 5 completed: Ultra-Modern Studio Redesign (Multi-Page Light Theme & Creative Motion) — complete aesthetic overhaul from dark terminal to "Light Mode Plus", glassmorphic bento grid, process light trail, interactive 3D elements, count-up stats, and confetti contact form.
+- Phase 6 added: Global Compliance, Accessibility & Ethical UI Audit — international compliance documents, sticky legal layout, non-intrusive cookie consent banner, WCAG AA contrast/focus rings, and dark pattern elimination.
 
 ## Next Actions
-- Run `/gsd-verify-work 5` for interactive UAT verification or preview the live dev server (`pnpm dev`).
+- Plan Phase 6 using `/gsd-plan-phase 6` or `/gsd-discuss-phase 6`.
