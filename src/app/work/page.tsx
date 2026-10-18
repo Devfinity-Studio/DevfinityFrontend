@@ -3,7 +3,7 @@ import WorkClient from "@/components/WorkClient";
 
 export const metadata: Metadata = {
   title: "Enterprise Production Deployments & Architectural Case Studies",
-  description: "Real-world engineering case studies proving system stability across custom industrial ERP architectures, complex relational schemas, and lightweight UI platforms.",
+  description: "Explore Devfinity case studies: enterprise ERP architectures, low-latency relational database systems, and clinical platforms built for mission-critical scale.",
   alternates: {
     canonical: "/work",
   },

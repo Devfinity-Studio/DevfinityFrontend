@@ -4,13 +4,13 @@ import { Building2, Mail, MapPin, Phone, ShieldCheck, UserCheck, FileText } from
 
 export const metadata: Metadata = {
   title: "Legal Notice & Impressum",
-  description: "Official Devfinity business identity, registered address, executive leadership, tax details, and legal disclosures.",
+  description: "Official Devfinity Studio corporate identity, registered Vadodara office address, executive leadership, tax details, and regulatory compliance disclosures.",
   alternates: {
     canonical: "/legal",
   },
   openGraph: {
     title: "Legal Notice & Impressum | Devfinity Studio",
-    description: "Official Devfinity business identity, registered address, executive leadership, tax details, and legal disclosures.",
+    description: "Official Devfinity Studio corporate identity, registered Vadodara office address, executive leadership, tax details, and regulatory compliance disclosures.",
     url: "https://devfinity.net/legal",
   },
 };

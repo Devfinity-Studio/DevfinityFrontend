@@ -11,6 +11,7 @@ export interface InsightArticle {
     role: string;
   }[];
   summary: string;
+  metaDescription: string;
   tags: string[];
   sections: {
     heading: string;
@@ -39,6 +40,8 @@ export const insightsArticles: InsightArticle[] = [
     ],
     summary:
       "Modern industrial facilities cannot afford client-side hydration waterfalls or unverified authentication boundaries. By shifting to Next.js App Router server components paired with Kinde role-based access control (RBAC), Devfinity eliminated schema drift and delivered sub-50ms transactional speeds across 12 manufacturing plants.",
+    metaDescription:
+      "How Devfinity used the T3 Stack, Next.js server components, and Kinde RBAC to eliminate schema drift and achieve sub-50ms speeds across 12 manufacturing plants.",
     tags: ["T3 Stack", "Next.js App Router", "Kinde Auth", "Drizzle ORM", "TypeScript"],
     sections: [
       {
@@ -99,6 +102,8 @@ export async function FacilityInventoryLedger({ facilityId }: { facilityId: stri
     ],
     summary:
       "Database schema synchronization issues are the leading cause of silent enterprise failures. By combining Drizzle ORM's SQL-like declarative schema definitions with automated migration safeguards, Devfinity guarantees 100% type safety and sub-40ms query execution under heavy transactional loads.",
+    metaDescription:
+      "How compile-time schema safety and PostgreSQL indexing with Drizzle ORM eliminate runtime crashes and maintain sub-40ms query latency under heavy peak loads.",
     tags: ["PostgreSQL", "Drizzle ORM", "TypeScript", "Performance Tuning"],
     sections: [
       {
@@ -158,6 +163,8 @@ export const insertAuditLogSchema = createInsertSchema(auditLogs);`,
     ],
     summary:
       "When monitoring high-altitude UAVs and experimental rocketry platforms, telemetry failure is not an option. Lessons from the intensive Def-Space Summer Internship informed Devfinity's approach to zero-trust network encryption, sub-10ms binary telemetry streaming, and resilient edge compute architectures.",
+    metaDescription:
+      "Aerospace telemetry and zero-trust cybersecurity lessons from Def-Space applied to sub-10ms binary streaming and resilient edge computing by Devfinity.",
     tags: ["Aerospace Telemetry", "Cybersecurity", "UAV Systems", "WebSockets", "Defense-Grade Tech"],
     sections: [
       {

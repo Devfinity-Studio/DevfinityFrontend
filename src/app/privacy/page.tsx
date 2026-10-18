@@ -4,13 +4,13 @@ import { ShieldCheck, Mail, AlertTriangle, UserCheck, Trash2, Lock } from "lucid
 
 export const metadata: Metadata = {
   title: "Privacy Policy",
-  description: "Devfinity's data protection commitment, privacy governance, data deletion procedures, and GDPR/CCPA compliance.",
+  description: "Devfinity's transparent privacy governance: data minimization, secure telemetry, deletion protocols, and international regulatory compliance.",
   alternates: {
     canonical: "/privacy",
   },
   openGraph: {
     title: "Privacy Policy | Devfinity Studio",
-    description: "Devfinity's data protection commitment, privacy governance, data deletion procedures, and GDPR/CCPA compliance.",
+    description: "Devfinity's transparent privacy governance: data minimization, secure telemetry, deletion protocols, and international regulatory compliance.",
     url: "https://devfinity.net/privacy",
   },
 };

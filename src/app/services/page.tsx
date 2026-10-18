@@ -3,7 +3,7 @@ import ServicesClient from "@/components/ServicesClient";
 
 export const metadata: Metadata = {
   title: "Custom ERP Development & Low-Latency Software Engineering",
-  description: "Deep-dive operational software design: from custom, multi-nested ERP systems featuring granular replacement registers to advanced relational database index tuning.",
+  description: "Custom enterprise ERP development, type-safe full-stack software engineering, and high-performance relational database design engineered by Devfinity.",
   alternates: {
     canonical: "/services",
   },

@@ -4,13 +4,13 @@ import { Cookie, CheckCircle2, Shield, Settings, Sliders } from "lucide-react";
 
 export const metadata: Metadata = {
   title: "Cookie Policy",
-  description: "Devfinity's transparent cookie policy, category classifications, telemetry opt-out guidance, and consent controls.",
+  description: "Detailed cookie classifications, telemetry usage disclosure, Do-Not-Track handling, and granular consent preference controls on Devfinity Studio platforms.",
   alternates: {
     canonical: "/cookies",
   },
   openGraph: {
     title: "Cookie Policy | Devfinity Studio",
-    description: "Devfinity's transparent cookie policy, category classifications, telemetry opt-out guidance, and consent controls.",
+    description: "Detailed cookie classifications, telemetry usage disclosure, Do-Not-Track handling, and granular consent preference controls on Devfinity Studio platforms.",
     url: "https://devfinity.net/cookies",
   },
 };
