@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import WorkClient from "@/components/WorkClient";
+import { defaultOpenGraphImages } from "@/data/openGraphDefaults";
 
 export const metadata: Metadata = {
   title: {
@@ -13,6 +14,8 @@ export const metadata: Metadata = {
     title: "Enterprise Case Studies & Deployments | Devfinity Studio",
     description: "Real-world engineering case studies: AsmeePharma, Virat ShivShakti ERP, and Rustechnet platforms.",
     url: "https://devfinity.net/work",
+    type: "website",
+    images: defaultOpenGraphImages,
   },
 };
 

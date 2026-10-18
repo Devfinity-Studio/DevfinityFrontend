@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { LegalLayout } from "@/components/LegalLayout";
 import { Scale, CheckCircle2, ShieldAlert, Award, FileCode2 } from "lucide-react";
+import { defaultOpenGraphImages } from "@/data/openGraphDefaults";
 
 export const metadata: Metadata = {
   title: "Terms of Service",
@@ -12,6 +13,8 @@ export const metadata: Metadata = {
     title: "Terms of Service | Devfinity Studio",
     description: "Devfinity's terms of service, bespoke engineering scope, code ownership transfer guarantees, and liability limitations.",
     url: "https://devfinity.net/terms",
+    type: "website",
+    images: defaultOpenGraphImages,
   },
 };
 

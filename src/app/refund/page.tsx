@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { LegalLayout } from "@/components/LegalLayout";
 import { FileText, CheckCircle2, Clock, HelpCircle, ArrowRight } from "lucide-react";
+import { defaultOpenGraphImages } from "@/data/openGraphDefaults";
 
 export const metadata: Metadata = {
   title: "Refund Policy",
@@ -12,6 +13,8 @@ export const metadata: Metadata = {
     title: "Refund Policy | Devfinity Studio",
     description: "Devfinity's transparent refund terms, milestone acceptance criteria, and sprint cancellation policies for digital engineering services.",
     url: "https://devfinity.net/refund",
+    type: "website",
+    images: defaultOpenGraphImages,
   },
 };
 

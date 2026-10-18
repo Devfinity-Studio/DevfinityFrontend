@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import ConnectClient from "@/components/ConnectClient";
+import { defaultOpenGraphImages } from "@/data/openGraphDefaults";
 
 export const metadata: Metadata = {
   title: {
@@ -13,6 +14,8 @@ export const metadata: Metadata = {
     title: "Contact & System Intake Terminal | Devfinity Studio",
     description: "Submit your software infrastructure blueprints to Devfinity's engineering team.",
     url: "https://devfinity.net/contact",
+    type: "website",
+    images: defaultOpenGraphImages,
   },
 };
 

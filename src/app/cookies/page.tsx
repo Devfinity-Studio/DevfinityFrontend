@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { LegalLayout } from "@/components/LegalLayout";
 import { Cookie, CheckCircle2, Shield, Settings, Sliders } from "lucide-react";
+import { defaultOpenGraphImages } from "@/data/openGraphDefaults";
 
 export const metadata: Metadata = {
   title: "Cookie Policy",
@@ -12,6 +13,8 @@ export const metadata: Metadata = {
     title: "Cookie Policy | Devfinity Studio",
     description: "Detailed cookie classifications, telemetry usage disclosure, Do-Not-Track handling, and granular consent preference controls on Devfinity Studio platforms.",
     url: "https://devfinity.net/cookies",
+    type: "website",
+    images: defaultOpenGraphImages,
   },
 };
 

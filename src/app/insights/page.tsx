@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import InsightsClient from "@/components/InsightsClient";
+import { defaultOpenGraphImages } from "@/data/openGraphDefaults";
 
 export const metadata: Metadata = {
   title: {
@@ -13,6 +14,8 @@ export const metadata: Metadata = {
     title: "Technical Insights & Architectures | Devfinity Studio",
     description: "Deep-dives into T3 stack enterprise migrations, Drizzle ORM workflows, and aerospace telemetry protocols.",
     url: "https://devfinity.net/insights",
+    type: "website",
+    images: defaultOpenGraphImages,
   },
 };
 

@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { LegalLayout } from "@/components/LegalLayout";
 import { Building2, Mail, MapPin, Phone, ShieldCheck, UserCheck, FileText } from "lucide-react";
+import { defaultOpenGraphImages } from "@/data/openGraphDefaults";
 
 export const metadata: Metadata = {
   title: "Legal Notice & Impressum",
@@ -12,6 +13,8 @@ export const metadata: Metadata = {
     title: "Legal Notice & Impressum | Devfinity Studio",
     description: "Official Devfinity Studio corporate identity, registered Vadodara office address, executive leadership, tax details, and regulatory compliance disclosures.",
     url: "https://devfinity.net/legal",
+    type: "website",
+    images: defaultOpenGraphImages,
   },
 };
 

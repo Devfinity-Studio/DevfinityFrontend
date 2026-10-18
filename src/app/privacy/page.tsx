@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { LegalLayout } from "@/components/LegalLayout";
 import { ShieldCheck, Mail, AlertTriangle, UserCheck, Trash2, Lock } from "lucide-react";
+import { defaultOpenGraphImages } from "@/data/openGraphDefaults";
 
 export const metadata: Metadata = {
   title: "Privacy Policy",
@@ -12,6 +13,8 @@ export const metadata: Metadata = {
     title: "Privacy Policy | Devfinity Studio",
     description: "Devfinity's transparent privacy governance: data minimization, secure telemetry, deletion protocols, and international regulatory compliance.",
     url: "https://devfinity.net/privacy",
+    type: "website",
+    images: defaultOpenGraphImages,
   },
 };
 

@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import LabsClient from "@/components/LabsClient";
+import { defaultOpenGraphImages } from "@/data/openGraphDefaults";
 
 export const metadata: Metadata = {
   title: {
@@ -13,6 +14,8 @@ export const metadata: Metadata = {
     title: "Devfinity Labs — Open Source & Hardware | Devfinity",
     description: "Hardware IoT bridges, open-source packages, and digital concept illustrations by Devfinity.",
     url: "https://devfinity.net/labs",
+    type: "website",
+    images: defaultOpenGraphImages,
   },
 };
 
