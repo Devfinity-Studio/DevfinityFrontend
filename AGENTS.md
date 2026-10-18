@@ -12,3 +12,6 @@
 - **Theme:** "Light Mode Plus" glassmorphic studio aesthetic (`bg-stone-50`, `#FAFAFA`, translucent glass cards, crisp border rings, gradient glows).
 - **Stack:** Next.js (App Router), React 19, TypeScript, Tailwind CSS, Lucide Icons, Three.js WebGL canvas.
 - **Git Branch:** Active production branch is `prod`.
+
+## 4. Git Push & Deployment Protocol
+- **Rule:** NEVER execute `git push` unless the user explicitly requests or confirms a push. All commits and local testing must remain local until instructed.
