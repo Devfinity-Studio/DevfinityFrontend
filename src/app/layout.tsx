@@ -95,12 +95,6 @@ export default function RootLayout({
   return (
     <html lang="en" className="scroll-smooth" data-scroll-behavior="smooth">
       <head>
-        {/* Ahrefs Analytics */}
-        <script
-          src="https://analytics.ahrefs.com/analytics.js"
-          data-key="hfZxB5X2kFg74set9raPsA"
-          async
-        />
         {/* Google Consent Mode v2 Default Initialization */}
         <script
           id="google-consent-mode-v2"
@@ -117,6 +111,24 @@ export default function RootLayout({
               });
             `,
           }}
+        />
+        {/* Google Tag Manager */}
+        <script
+          id="google-tag-manager"
+          dangerouslySetInnerHTML={{
+            __html: `(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','GTM-KF9WSQZ2');`,
+          }}
+        />
+        {/* End Google Tag Manager */}
+        {/* Ahrefs Analytics */}
+        <script
+          src="https://analytics.ahrefs.com/analytics.js"
+          data-key="hfZxB5X2kFg74set9raPsA"
+          async
         />
         <script
           type="application/ld+json"
@@ -190,6 +202,17 @@ export default function RootLayout({
       <body
         className={`${outfit.variable} ${jetbrainsMono.variable} font-sans antialiased min-h-screen flex flex-col bg-[#FAFAFA] text-zinc-900 bg-radial-dots selection:bg-blue-600 selection:text-white`}
       >
+        {/* Google Tag Manager (noscript) */}
+        <noscript>
+          <iframe
+            src="https://www.googletagmanager.com/ns.html?id=GTM-KF9WSQZ2"
+            height="0"
+            width="0"
+            style={{ display: "none", visibility: "hidden" }}
+          />
+        </noscript>
+        {/* End Google Tag Manager (noscript) */}
+
         {/* WCAG Skip to Main Content Link for Screen Readers & Keyboard Users */}
         <a
           href="#main-content"
