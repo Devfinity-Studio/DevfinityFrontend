@@ -1,9 +1,17 @@
 import type { Metadata } from "next";
-import { JetBrains_Mono } from "next/font/google";
+import { JetBrains_Mono, Outfit } from "next/font/google";
 import "./globals.css";
-import {Header} from "@/components/Header";
+import { Header } from "@/components/Header";
 import { Footer } from "@/components/Footer";
 import { GSAPProvider } from "@/components/GSAPProvider";
+import { CustomCursor } from "@/components/CustomCursor";
+import { AmbientMesh } from "@/components/AmbientMesh";
+
+const outfit = Outfit({
+  variable: "--font-outfit",
+  subsets: ["latin"],
+  weight: ["400", "500", "600", "700", "800", "900"],
+});
 
 const jetbrainsMono = JetBrains_Mono({
   variable: "--font-jetbrains-mono",
@@ -11,8 +19,8 @@ const jetbrainsMono = JetBrains_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Devfinity",
-  description: "Bespoke full-stack web application engineering for complex corporate infrastructures. We replace rigid templates with low-latency, role-based database environments.",
+  title: "Devfinity Studio | Creative Web Development & Digital Experiences",
+  description: "Ultra-modern web development studio engineering interactive digital experiences, type-safe full-stack platforms, and bespoke software architectures.",
   icons: {
     icon: [
       { url: '/favicons/favicon.ico' },
@@ -30,7 +38,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className="dark">
+    <html lang="en" className="scroll-smooth">
       <head>
         <script
           type="application/ld+json"
@@ -41,7 +49,7 @@ export default function RootLayout({
                 {
                   "@type": "ProfessionalService",
                   "@id": "https://devfinity.dev/#agency",
-                  "name": "Devfinity",
+                  "name": "Devfinity Studio",
                   "url": "https://devfinity.dev",
                   "image": "https://devfinity.dev/assets/og-brand-anchor.jpg",
                   "address": {
@@ -56,12 +64,10 @@ export default function RootLayout({
                     "longitude": "73.1812"
                   },
                   "priceRange": "$$$$",
-                  "description": "Bespoke full-stack software development agency engineering type-safe Next.js applications, custom role-based ERP systems, and low-latency database infrastructures.",
+                  "description": "Ultra-modern software development studio engineering type-safe Next.js platforms, interactive creative web experiences, and low-latency database architectures.",
                   "knowsAbout": [
                     "https://en.wikipedia.org/wiki/Web_development",
-                    "https://en.wikipedia.org/wiki/Enterprise_resource_planning",
                     "https://en.wikipedia.org/wiki/TypeScript",
-                    "https://en.wikipedia.org/wiki/Object%E2%80%93relational_mapping",
                     "https://en.wikipedia.org/wiki/User_interface_design"
                   ]
                 },
@@ -69,7 +75,7 @@ export default function RootLayout({
                   "@type": "WebPage",
                   "@id": "https://devfinity.dev/#webpage",
                   "url": "https://devfinity.dev",
-                  "name": "Devfinity | Custom Web Development & Enterprise Infrastructure",
+                  "name": "Devfinity Studio | Creative Web Development & Digital Experiences",
                   "isPartOf": { "@id": "https://devfinity.dev/#website" },
                   "about": { "@id": "https://devfinity.dev/#agency" }
                 }
@@ -79,14 +85,16 @@ export default function RootLayout({
         />
       </head>
       <body
-        className={`${jetbrainsMono.variable} ${jetbrainsMono.className} antialiased min-h-screen flex flex-col`}
+        className={`${outfit.variable} ${jetbrainsMono.variable} font-sans antialiased min-h-screen flex flex-col bg-[#FAFAFA] text-zinc-900 bg-radial-dots selection:bg-blue-600 selection:text-white`}
       >
         <GSAPProvider>
-          <Header/>
-          <main className="flex-1">
+          <CustomCursor />
+          <AmbientMesh />
+          <Header />
+          <main className="flex-1 relative z-10">
             {children}
           </main>
-          <Footer/>
+          <Footer />
         </GSAPProvider>
       </body>
     </html>

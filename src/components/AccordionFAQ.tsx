@@ -1,21 +1,25 @@
 "use client";
 
 import { useState } from "react";
-import { Plus, Minus } from "lucide-react";
+import { Plus, Minus, HelpCircle } from "lucide-react";
 
 export function AccordionFAQ() {
   const faqs = [
     {
-      q: "How long does a custom ERP or CRM architectural build take from blueprint to deployment?",
-      a: "A standard custom enterprise infrastructure typically spans 8 to 12 weeks. This includes detailed operational mapping, relational schema building, integration of specialized registers (such as a custom Replacement Register), and live traffic stress testing."
+      q: "How long does a custom web platform or ERP architecture take from blueprint to deployment?",
+      a: "A standard custom enterprise build typically spans 6 to 10 weeks. This includes detailed operational scoping, database relational schema design, interactive UI prototyping, and live traffic stress testing."
     },
     {
-      q: "Can Devfinity handle legacy database migration into a new full-stack system?",
-      a: "Yes. Devfinity designs dedicated data translation pipelines that extract, clean, and map legacy files directly into optimized, type-safe relational schemas. This migration workflow maintains absolute data integrity and ensures zero system downtime during the cutover phase."
+      q: "Can Devfinity handle legacy data migration into a new full-stack system?",
+      a: "Yes. We engineer automated data translation pipelines that extract, scrub, and map legacy files into type-safe relational databases. This workflow ensures zero data loss and flawless continuity."
     },
     {
-      q: "Who owns the final production codebase and deployment infrastructure?",
-      a: "Your organization retains full ownership of the source code assets, database instances, and platform configurations. Devfinity provides clear documentation and direct keys upon production handoff."
+      q: "Who owns the final codebase, database instances, and intellectual property?",
+      a: "Your organization retains 100% full ownership of all source code repositories, deployment scripts, database instances, and assets upon production handoff. No proprietary vendor lock-in."
+    },
+    {
+      q: "What makes Devfinity's 'Light Mode Plus' and bespoke code outperform standard templates?",
+      a: "Standard templates carry heavy client script overhead, dragging down Core Web Vitals and user adoption. We write clean Next.js server-rendered code with sub-150ms interaction latency, zero layout shifting, and tactile micro-interactions."
     }
   ];
 
@@ -33,7 +37,7 @@ export function AccordionFAQ() {
   };
 
   return (
-    <div className="w-full max-w-4xl mx-auto space-y-4 font-mono">
+    <div className="w-full max-w-4xl mx-auto space-y-4">
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }}
@@ -45,26 +49,32 @@ export function AccordionFAQ() {
   );
 }
 
-function AccordionItem({ question, answer }: { question: string, answer: string }) {
+function AccordionItem({ question, answer }: { question: string; answer: string }) {
   const [isOpen, setIsOpen] = useState(false);
 
   return (
-    <div className="border border-[#2C2C35] bg-[#16161A]">
+    <div className="glass-card rounded-2xl overflow-hidden border border-white/80 shadow-xs transition-all duration-200">
       <button 
+        type="button"
         onClick={() => setIsOpen(!isOpen)}
-        className="w-full p-6 flex justify-between items-center hover:bg-[#1A1A1E] transition-colors focus:outline-none"
+        className="w-full p-6 flex justify-between items-center text-left hover:bg-black/[0.02] transition-colors focus:outline-none cursor-pointer"
       >
-        <h3 className="text-left text-[#F5F5F7] font-bold text-sm md:text-base leading-relaxed pr-8 m-0">
-          Q: {question}
-        </h3>
-        <div className={`p-2 rounded border transition-colors ${isOpen ? "border-[#0A84FF] text-[#0A84FF]" : "border-[#2C2C35] text-[#8E8E93]"}`}>
+        <div className="flex items-center space-x-3 pr-6">
+          <HelpCircle className="w-4 h-4 text-blue-600 flex-shrink-0" />
+          <h3 className="text-zinc-900 font-extrabold text-base md:text-lg tracking-tight m-0">
+            {question}
+          </h3>
+        </div>
+        <div className={`w-8 h-8 rounded-full flex items-center justify-center transition-colors flex-shrink-0 ${
+          isOpen ? "bg-blue-600 text-white" : "bg-black/[0.04] text-zinc-600"
+        }`}>
           {isOpen ? <Minus className="w-4 h-4" /> : <Plus className="w-4 h-4" />}
         </div>
       </button>
       <div className={`grid transition-all duration-300 ease-in-out ${isOpen ? "grid-rows-[1fr]" : "grid-rows-[0fr]"}`}>
         <div className="overflow-hidden">
-          <p className="p-6 pt-0 text-[#8E8E93] text-sm md:text-base leading-relaxed border-t border-[#2C2C35] m-0">
-            A: {answer}
+          <p className="px-6 pb-6 pt-2 text-zinc-600 text-sm md:text-base leading-relaxed border-t border-black/[0.04] m-0">
+            {answer}
           </p>
         </div>
       </div>

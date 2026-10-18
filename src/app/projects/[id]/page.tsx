@@ -1,93 +1,152 @@
 import Link from "next/link";
-import { Button } from "@/components/ui/button";
-import { ArrowLeft, ExternalLink, Github } from "lucide-react";
+import { ArrowLeft, ExternalLink, Github, Sparkles, CheckCircle2 } from "lucide-react";
 
 export default async function ProjectPage({ params }: { params: Promise<{ id: string }> }) {
   const resolvedParams = await params;
   const projectId = resolvedParams.id;
-  
-  // Generic mock data based on ID
-  const project = {
-    id: projectId,
+
+  const projectMap: Record<string, { title: string; client: string; category: string; description: string; tech: string[]; metrics: string }> = {
+    erp: {
+      title: "Shivshakti Industrial ERP Platform",
+      client: "Shivshakti Agro Industries",
+      category: "Enterprise System",
+      description: "A centralized operational hub replacing fragmented dispatch spreadsheets into a type-safe Next.js platform. Features granular replacement registers, automated audits, and multi-tenant security.",
+      tech: ["Next.js 16", "PostgreSQL", "TypeORM", "Zod", "TypeScript", "Tailwind 4"],
+      metrics: "94% Adoption Rate across 12 factories",
+    },
+    fintech: {
+      title: "Real-Time Transaction Ledger",
+      client: "Apex Financial Labs",
+      category: "Financial Architecture",
+      description: "Sub-50ms audit logging pipeline featuring immutable event streaming, zero-overhead client synchronization, and cryptographic data verification.",
+      tech: ["Next.js App Router", "Serverless Edge", "WebSockets", "Tailwind CSS"],
+      metrics: "100% Audit Precision under heavy peak traffic",
+    },
+    cloud: {
+      title: "Telemetry & Infrastructure Visualizer",
+      client: "KubeCloud Technologies",
+      category: "DevOps & Cloud",
+      description: "Interactive distributed node visualizer with live topology mapping, continuous latency probing, and incident timeline replays.",
+      tech: ["React 19", "GSAP 3.15", "SVG Math", "TypeScript"],
+      metrics: "< 120ms Global Roundtrip",
+    },
+    pipeline: {
+      title: "Automated Deployment Pipeline Terminal",
+      client: "DevOps Global Networks",
+      category: "Automation Core",
+      description: "Bespoke continuous delivery console providing granular rollbacks, live compilation stream diagnostics, and automated verification checks.",
+      tech: ["Turbopack", "Radix UI", "Node.js", "Zod"],
+      metrics: "Zero Downtime Deployments Guaranteed",
+    },
+  };
+
+  const project = projectMap[projectId] || {
     title: `Project ${projectId.toUpperCase()}`,
-    description: "A cutting-edge solution designed to improve operational efficiency and deliver an exceptional user experience. This custom build incorporates state-of-the-art technologies to ensure scalability, security, and performance.",
-    technologies: ["Next.js", "React", "TypeScript", "Tailwind CSS"],
-    client: "Acme Corporation",
-    year: "2026",
-    liveUrl: "https://example.com",
-    githubUrl: "https://github.com",
+    client: "Enterprise Partner",
+    category: "Bespoke System",
+    description: "A cutting-edge solution designed to improve operational efficiency and deliver an exceptional user experience. Incorporates state-of-the-art technologies to ensure scalability, security, and performance.",
+    tech: ["Next.js 16", "React 19", "TypeScript 5", "Tailwind CSS 4"],
+    metrics: "Production Verified",
   };
 
   return (
-    <div className="container mx-auto px-4 py-12 md:py-24">
+    <div className="container mx-auto px-4 md:px-8 py-12 md:py-20 max-w-6xl">
       <div className="mb-8">
-        <Button variant="ghost" asChild className="-ml-4">
-          <Link href="/#projects">
-            <ArrowLeft className="mr-2 h-4 w-4" />
-            Back to Projects
-          </Link>
-        </Button>
+        <Link
+          href="/work"
+          className="inline-flex items-center space-x-2 text-xs font-mono font-bold uppercase text-zinc-600 hover:text-blue-600 transition-colors p-2 rounded-lg hover:bg-black/[0.03]"
+        >
+          <ArrowLeft className="h-4 w-4" />
+          <span>Back to Production Deployments</span>
+        </Link>
       </div>
 
-      <div className="grid grid-cols-1 md:grid-cols-3 gap-12">
-        <div className="md:col-span-2 space-y-8">
+      <div className="grid grid-cols-1 lg:grid-cols-3 gap-12 items-start">
+        <div className="lg:col-span-2 space-y-8">
           <div>
-            <h1 className="text-4xl font-bold tracking-tight sm:text-5xl mb-4">{project.title}</h1>
-            <p className="text-xl text-muted-foreground">{project.description}</p>
-          </div>
-
-          <div className="aspect-video bg-muted/60 rounded-lg flex items-center justify-center border border-border/40">
-            <span className="text-muted-foreground">Main Project Image Placeholder</span>
-          </div>
-
-          <div className="grid grid-cols-2 gap-4">
-             <div className="aspect-video bg-muted/60 rounded-lg flex items-center justify-center border border-border/40">
-              <span className="text-muted-foreground text-sm">Screenshot 1</span>
+            <div className="inline-flex items-center space-x-2 px-3 py-1 rounded-full bg-blue-50 text-blue-600 text-xs font-mono font-semibold tracking-wider uppercase mb-3">
+              <Sparkles className="w-3.5 h-3.5" />
+              <span>{project.category}</span>
             </div>
-            <div className="aspect-video bg-muted/60 rounded-lg flex items-center justify-center border border-border/40">
-              <span className="text-muted-foreground text-sm">Screenshot 2</span>
+            <h1 className="text-4xl md:text-5xl font-black tracking-tight text-zinc-900 mb-4">
+              {project.title}
+            </h1>
+            <p className="text-lg text-zinc-600 leading-relaxed font-normal">
+              {project.description}
+            </p>
+          </div>
+
+          {/* Interactive Workspace Window Mockup */}
+          <div className="h-80 rounded-3xl glass-panel border border-white/80 p-6 flex flex-col justify-between shadow-xl shadow-blue-500/5 relative overflow-hidden">
+            <div className="flex items-center justify-between border-b border-black/[0.06] pb-3">
+              <div className="flex items-center space-x-2">
+                <div className="w-3 h-3 rounded-full bg-rose-400" />
+                <div className="w-3 h-3 rounded-full bg-amber-400" />
+                <div className="w-3 h-3 rounded-full bg-emerald-400" />
+              </div>
+              <span className="text-xs font-mono text-zinc-600 font-semibold tracking-wider uppercase">
+                {projectId}.production.env
+              </span>
+              <div className="w-3 h-3" />
+            </div>
+
+            <div className="flex-1 flex flex-col items-center justify-center text-center p-6 space-y-3">
+              <div className="w-12 h-12 rounded-2xl bg-blue-500/10 text-blue-600 flex items-center justify-center">
+                <Sparkles className="w-6 h-6" />
+              </div>
+              <h3 className="text-xl font-extrabold text-zinc-900 tracking-tight">
+                {project.title}
+              </h3>
+              <p className="text-xs font-mono text-emerald-600 font-semibold">
+                Status: Verified in Production
+              </p>
             </div>
           </div>
         </div>
 
-        <div className="space-y-8">
-          <div className="bg-muted/30 p-6 rounded-lg border border-border/40">
-            <h3 className="font-semibold text-lg mb-4">Project Details</h3>
-            <dl className="space-y-4 text-sm">
+        {/* Sidebar Details Card */}
+        <div className="space-y-6">
+          <div className="glass-card rounded-3xl p-7 border border-white/80 shadow-lg space-y-6">
+            <h3 className="font-extrabold text-lg text-zinc-900 tracking-tight border-b border-black/[0.06] pb-3">
+              Architectural Specifications
+            </h3>
+            
+            <dl className="space-y-4 text-sm font-sans">
               <div>
-                <dt className="text-muted-foreground">Client</dt>
-                <dd className="font-medium">{project.client}</dd>
+                <dt className="text-xs font-mono text-zinc-600 uppercase font-semibold">Client Organization</dt>
+                <dd className="font-bold text-zinc-900 mt-0.5">{project.client}</dd>
               </div>
+
               <div>
-                <dt className="text-muted-foreground">Year</dt>
-                <dd className="font-medium">{project.year}</dd>
+                <dt className="text-xs font-mono text-zinc-600 uppercase font-semibold">Validation Benchmark</dt>
+                <dd className="font-bold text-emerald-600 mt-0.5 flex items-center gap-1">
+                  <CheckCircle2 className="w-4 h-4" /> {project.metrics}
+                </dd>
               </div>
+
               <div>
-                <dt className="text-muted-foreground mb-2">Technologies</dt>
+                <dt className="text-xs font-mono text-zinc-600 uppercase font-semibold mb-2">Deployed Technologies</dt>
                 <dd className="flex flex-wrap gap-2">
-                  {project.technologies.map(tech => (
-                    <span key={tech} className="bg-secondary px-2 py-1 rounded-md text-xs font-medium">
-                      {tech}
+                  {project.tech.map((t) => (
+                    <span
+                      key={t}
+                      className="px-2.5 py-1 rounded-lg bg-zinc-100 text-zinc-700 text-xs font-mono font-medium border border-zinc-200"
+                    >
+                      {t}
                     </span>
                   ))}
                 </dd>
               </div>
             </dl>
-          </div>
 
-          <div className="flex flex-col space-y-3">
-            <Button asChild className="w-full">
-              <a href={project.liveUrl} target="_blank" rel="noreferrer">
-                <ExternalLink className="mr-2 h-4 w-4" />
-                View Live Project
-              </a>
-            </Button>
-            <Button variant="outline" asChild className="w-full">
-              <a href={project.githubUrl} target="_blank" rel="noreferrer">
-                <Github className="mr-2 h-4 w-4" />
-                View Source Code
-              </a>
-            </Button>
+            <div className="pt-4 border-t border-black/[0.06] space-y-3">
+              <Link
+                href="/connect"
+                className="w-full py-3 rounded-full font-mono font-bold text-xs text-white bg-gradient-to-r from-blue-600 via-indigo-600 to-purple-600 shadow-md shadow-blue-500/25 flex items-center justify-center space-x-2 text-center"
+              >
+                <span>Request Similar Architecture 🚀</span>
+              </Link>
+            </div>
           </div>
         </div>
       </div>

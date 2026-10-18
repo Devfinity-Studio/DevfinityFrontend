@@ -2,226 +2,143 @@
 
 import { useRef } from "react";
 import gsap from "gsap";
-import ScrollTrigger from "gsap/ScrollTrigger";
 import { useGSAP } from "@gsap/react";
-import { ComparisonSlider } from "@/components/ComparisonSlider";
+import { Sparkles, Check, ArrowRight, Shield, Zap, Layers, Database } from "lucide-react";
+import { ProcessPipeline } from "@/components/ProcessPipeline";
+import { StatCounters } from "@/components/StatCounters";
+import { MagneticButton } from "@/components/MagneticButton";
 
 export default function ServicesClient() {
   const containerRef = useRef<HTMLDivElement>(null);
-  const vp2Ref = useRef<HTMLDivElement>(null);
-  const dashRef = useRef<HTMLDivElement>(null);
-  const vp4Ref = useRef<HTMLDivElement>(null);
-  const trackLineRef = useRef<HTMLDivElement>(null);
 
-  useGSAP(() => {
-    // Viewport 1: Clipping Mask Entry
-    gsap.from(".hero-text", {
-      y: 100,
-      opacity: 0,
-      duration: 1,
-      stagger: 0.1,
-      ease: "power4.out",
-    });
-
-    // Viewport 2: Pinned Dashboard
-    ScrollTrigger.create({
-      trigger: vp2Ref.current,
-      start: "top top",
-      end: "bottom bottom",
-      pin: dashRef.current,
-      scrub: 1,
-    });
-
-    // Viewport 2: Row Highlights interpolation sync
-    const rows = gsap.utils.toArray(".dash-row");
-    rows.forEach((row, i) => {
-      gsap.to(row as Element, {
-        scrollTrigger: {
-          trigger: vp2Ref.current,
-          start: `top+=${i * 30}% center`,
-          end: `top+=${(i + 1) * 30}% center`,
-          scrub: true,
-          toggleClass: "active",
-        },
+  useGSAP(
+    () => {
+      gsap.from(".services-hero-anim", {
+        y: 40,
+        opacity: 0,
+        duration: 0.9,
+        stagger: 0.12,
+        ease: "power3.out",
       });
-    });
+    },
+    { scope: containerRef }
+  );
 
-    // Viewport 4: Vertical Timeline Fill
-    gsap.fromTo(trackLineRef.current, { height: "0%" }, {
-      height: "100%",
-      ease: "none",
-      scrollTrigger: {
-        trigger: vp4Ref.current,
-        start: "top center",
-        end: "bottom center",
-        scrub: 1,
-      }
-    });
-
-    // Viewport 4: Phase Header illumination
-    const phases = gsap.utils.toArray(".phase-header");
-    phases.forEach((phase) => {
-      gsap.to(phase as Element, {
-        scrollTrigger: {
-          trigger: phase as Element,
-          start: "top center",
-          end: "bottom center",
-          scrub: 1,
-          toggleClass: "text-[#30D158]",
-        }
-      });
-    });
-
-  }, { scope: containerRef });
+  const capabilities = [
+    {
+      title: "Bespoke Enterprise Systems (ERP / CRM)",
+      icon: Layers,
+      desc: "Custom operational backbones designed from scratch. Role-based granular permissions, automated sales auditing, replacement registers, and seamless real-time tracking.",
+      deliverables: ["Role-Based Access Control", "Automated Auditing", "Zero Spreadsheet Latency"],
+    },
+    {
+      title: "High-Performance Next.js Web Platforms",
+      icon: Zap,
+      desc: "Server-component-driven architectures stripped of heavy client-side bloat. Sub-150ms roundtrip responses, instantaneous routing, and dynamic visual flair.",
+      deliverables: ["React 19 Server Components", "Turbopack Optimization", "Zero Layout Shifting"],
+    },
+    {
+      title: "Optimized Relational Database Architecture",
+      icon: Database,
+      desc: "Speed is governed by data structures. We architect deeply indexed PostgreSQL and MySQL schemas that withstand high-concurrency transactional spikes.",
+      deliverables: ["Index Tuning & Query Optimization", "Type-Safe ORM Mappings", "Automated Migration Guards"],
+    },
+    {
+      title: "Continuous Verification & Zero-Downtime Deploy",
+      icon: Shield,
+      desc: "Compile-time strictness and continuous validation pipelines ensure zero regressions bypass automated gates into production.",
+      deliverables: ["100% Strict Type Verification", "Vercel OIDC Deploy Pipelines", "Security Threat Mitigations"],
+    },
+  ];
 
   return (
-    <div ref={containerRef} className="flex flex-col min-h-screen bg-[#121214] text-[#F5F5F7] font-mono">
+    <div ref={containerRef} className="flex flex-col min-h-screen">
       
-      {/* Viewport 1: The Core Systems Engineering Hook */}
-      <section className="h-screen w-full flex items-center justify-center p-8 border-b border-[#2C2C35] bg-[#121214]">
-        <div className="max-w-6xl w-full grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
-          <div className="space-y-6">
-            <div className="overflow-hidden">
-              <h1 className="hero-text text-4xl md:text-6xl font-bold tracking-tighter uppercase text-[#F5F5F7]">
-                [02 / SERVICES]
-              </h1>
-            </div>
-            <div className="overflow-hidden">
-              <h1 className="hero-text text-4xl md:text-6xl font-bold tracking-tighter uppercase text-[#0A84FF]">
-                BESPOKE ENTERPRISE ARCHITECTURES
-              </h1>
-            </div>
-            <p className="hero-text text-[#8E8E93] text-lg leading-relaxed">
-              We engineer reliable administrative engines that replace slow, fragmented spreadsheets with centralized software platforms. By linking real-time internal auditing tools directly to clean operational dashboards, we build the reliable internal framework that lets teams coordinate without operational friction.
-            </p>
+      {/* Services Hero */}
+      <section className="relative pt-24 pb-16 md:pt-32 md:pb-20 px-4 md:px-8 overflow-hidden text-center">
+        <div className="container mx-auto max-w-4xl space-y-6">
+          <div className="services-hero-anim inline-flex items-center space-x-2 px-4 py-1.5 rounded-full bg-blue-50/80 border border-blue-200/60 text-blue-600 text-xs font-mono font-semibold tracking-wider uppercase shadow-xs">
+            <Sparkles className="w-3.5 h-3.5" />
+            <span>[ 02 / SERVICES &amp; CAPABILITIES ]</span>
           </div>
-          <div className="hero-text w-full aspect-video border border-[#2C2C35] bg-[#1A1A1E] rounded-md shadow-2xl relative overflow-hidden flex items-center justify-center">
-            {/* Node graph placeholder */}
-            <div className="absolute inset-0 flex items-center justify-center opacity-50">
-               <svg className="w-full h-full text-[#30D158]" viewBox="0 0 100 100" preserveAspectRatio="none">
-                 <path d="M10,50 Q30,20 50,50 T90,50" fill="none" stroke="currentColor" strokeWidth="0.5" className="animate-pulse" />
-                 <circle cx="10" cy="50" r="2" fill="currentColor" />
-                 <circle cx="50" cy="50" r="2" fill="currentColor" />
-                 <circle cx="90" cy="50" r="2" fill="currentColor" />
-               </svg>
-            </div>
-            <span className="text-[#8E8E93] z-10">[ ACTIVE NODE-GRAPH VISUALIZER ]</span>
-          </div>
+          <h1 className="services-hero-anim text-5xl md:text-7xl font-black tracking-tighter text-zinc-900 uppercase">
+            ENGINEERING <span className="text-gradient-future">PRECISION</span>
+          </h1>
+          <p className="services-hero-anim text-lg md:text-xl text-zinc-600 leading-relaxed max-w-2xl mx-auto">
+            We do not sell pre-made templates. We architect resilient, bespoke full-stack applications engineered for the exact operational realities of modern enterprise workflows.
+          </p>
         </div>
       </section>
 
-      {/* Viewport 2: Pinned Custom ERP Systems */}
-      <section ref={vp2Ref} className="relative w-full flex flex-col md:flex-row bg-[#1A1A1E] border-b border-[#2C2C35]">
-        {/* Left Column: Scrolling Text */}
-        <div className="w-full md:w-1/2 p-8 md:p-24 space-y-96">
-          <div className="max-w-xl mx-auto space-y-6 pt-24 pb-96">
-             <h2 className="text-3xl font-bold uppercase text-[#0A84FF]">The Replacement Register</h2>
-             <div className="bg-[#121214] border border-[#2C2C35] p-6 space-y-4 shadow-lg">
-               <h3 className="text-xl font-bold text-[#F5F5F7] uppercase border-b border-[#2C2C35] pb-2">
-                 Functional Parameters of a Custom ERP System
-               </h3>
-               <p className="text-[#8E8E93] leading-relaxed text-base">
-                 Unlike standard off-the-shelf software, a custom enterprise system maps directly to physical transactions. Our architecture integrates a native, type-safe Replacement Register. This operational module allows system administrators to isolate specific unique Order IDs, instantly audit damaged inventory metrics, and initiate automated stock adjustments without causing database desynchronization or structural state drift.
-               </p>
-             </div>
-          </div>
-        </div>
+      {/* Numerical Stat Counters */}
+      <StatCounters />
 
-        {/* Right Column: Pinned Dashboard */}
-        <div className="w-full md:w-1/2 relative">
-          <div ref={dashRef} className="h-screen w-full flex items-center justify-center p-8 sticky top-0">
-            <div className="w-full max-w-lg border border-[#2C2C35] rounded-md shadow-2xl bg-[#121214] flex flex-col overflow-hidden">
-               <div className="h-8 border-b border-[#2C2C35] flex items-center px-4 bg-[#1A1A1E]">
-                  <div className="flex space-x-2">
-                    <div className="w-3 h-3 rounded-full bg-[#2C2C35]" />
-                    <div className="w-3 h-3 rounded-full bg-[#2C2C35]" />
-                    <div className="w-3 h-3 rounded-full bg-[#2C2C35]" />
-                  </div>
-               </div>
-               <div className="p-4 space-y-4 font-mono text-sm">
-                  <div className="flex justify-between text-[#8E8E93] border-b border-[#2C2C35] pb-2">
-                    <span>[ORDER_ID]</span><span>[SKU_REF]</span><span>[STATUS]</span>
-                  </div>
-                  <div className="dash-row flex justify-between border border-[#2C2C35] p-2 transition-colors duration-300 [&.active]:border-[#30D158] [&.active]:text-[#30D158]">
-                    <span>#ORD-9921</span><span>SKU-A12</span><span>DISPATCHED</span>
-                  </div>
-                  <div className="dash-row flex justify-between border border-[#2C2C35] p-2 transition-colors duration-300 [&.active]:border-[#30D158] [&.active]:text-[#30D158]">
-                    <span>#ORD-9922</span><span>SKU-B44</span><span>DAMAGED_LOG</span>
-                  </div>
-                  <div className="dash-row flex justify-between border border-[#2C2C35] p-2 transition-colors duration-300 [&.active]:border-[#30D158] [&.active]:text-[#30D158]">
-                    <span>#ORD-9923</span><span>SKU-C19</span><span>OVERRIDE</span>
-                  </div>
-               </div>
-            </div>
-          </div>
-        </div>
-      </section>
+      {/* The Process Pipeline with Scroll-Linked Light Trail */}
+      <ProcessPipeline />
 
-      {/* Viewport 3: The Performance Optimization Playground */}
-      <section className="h-screen w-full flex flex-col items-center justify-center p-8 bg-[#121214] border-b border-[#2C2C35]">
-         <div className="max-w-4xl w-full text-center space-y-6 mb-12">
-            <h2 className="text-4xl md:text-5xl font-bold uppercase text-[#F5F5F7]">
-               OPTIMIZED ENGINE METRICS // SUB-SECOND RENDERING
+      {/* Detailed Capabilities Grid */}
+      <section className="w-full py-24 px-4 md:px-8 relative z-10">
+        <div className="container mx-auto max-w-6xl">
+          <div className="text-center mb-16 space-y-3">
+            <h2 className="text-3xl md:text-5xl font-black tracking-tight text-zinc-900">
+              Core Architectural Pillars
             </h2>
-            <p className="text-[#8E8E93] text-lg leading-relaxed max-w-3xl mx-auto">
-               Bloated interfaces waste valuable administrative time and degrade focus. We isolate component layers, strips away unnecessary client-side background scripts, and serves pages that render immediately. Our applications reduce layout shifting to zero, keeping high-frequency data pipelines stable and accessible under heavy daily transaction loads.
+            <p className="text-zinc-600 max-w-xl mx-auto text-base">
+              Explore how our engineering principles deliver measurable competitive advantages.
             </p>
-         </div>
-         <div className="w-full max-w-5xl">
-            <ComparisonSlider />
-         </div>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+            {capabilities.map((item) => {
+              const Icon = item.icon;
+              return (
+                <div
+                  key={item.title}
+                  className="glass-card rounded-3xl p-8 flex flex-col justify-between group"
+                  data-cursor="view"
+                >
+                  <div>
+                    <div className="w-12 h-12 rounded-2xl bg-blue-500/10 text-blue-600 flex items-center justify-center mb-6 group-hover:scale-110 transition-transform">
+                      <Icon className="w-6 h-6" />
+                    </div>
+                    <h3 className="text-2xl font-extrabold text-zinc-900 tracking-tight mb-3">
+                      {item.title}
+                    </h3>
+                    <p className="text-sm text-zinc-600 leading-relaxed mb-6 font-normal">
+                      {item.desc}
+                    </p>
+                  </div>
+
+                  <div className="pt-4 border-t border-black/[0.06] space-y-2">
+                    {item.deliverables.map((d) => (
+                      <div key={d} className="flex items-center space-x-2 text-xs font-mono text-zinc-700">
+                        <Check className="w-3.5 h-3.5 text-emerald-600 flex-shrink-0" />
+                        <span>{d}</span>
+                      </div>
+                    ))}
+                  </div>
+                </div>
+              );
+            })}
+          </div>
+        </div>
       </section>
 
-      {/* Viewport 4: The 4-Phase System Deployment Pipeline */}
-      <section ref={vp4Ref} className="relative w-full py-32 flex justify-center bg-[#1A1A1E]">
-         {/* Vertical Tracker Line */}
-         <div className="absolute left-8 md:left-1/2 top-32 bottom-32 w-[2px] bg-[#2C2C35] -translate-x-1/2">
-            <div ref={trackLineRef} className="w-full bg-[#30D158] origin-top" />
-         </div>
-         
-         <div className="max-w-4xl w-full px-16 space-y-32">
-            <div className="text-center mb-32">
-               <h2 className="text-4xl md:text-5xl font-bold uppercase text-[#F5F5F7]">
-                  THE DEPLOYMENT SYSTEM // SOURCE CODE TO PRODUCTION
-               </h2>
-            </div>
-
-            <div className="relative">
-               <h3 className="phase-header text-2xl font-bold uppercase text-[#8E8E93] transition-colors duration-300 mb-4 bg-[#1A1A1E] inline-block pr-4 relative z-10">
-                  [PHASE_01 // ARCHITECTURAL BLUEPRINTING]
-               </h3>
-               <p className="text-lg text-[#F5F5F7] leading-relaxed">
-                  Mapping raw enterprise communication hierarchies, role permissions, and inventory workflows into deterministic logical diagrams before a single line of code is committed.
-               </p>
-            </div>
-
-            <div className="relative">
-               <h3 className="phase-header text-2xl font-bold uppercase text-[#8E8E93] transition-colors duration-300 mb-4 bg-[#1A1A1E] inline-block pr-4 relative z-10">
-                  [PHASE_02 // TYPE-SAFE COMPILATION]
-               </h3>
-               <p className="text-lg text-[#F5F5F7] leading-relaxed">
-                  Initializing backend servers with strict validation layers and fully mapped relational schemas to guarantee that schema mismatch errors are caught at build-time.
-               </p>
-            </div>
-
-            <div className="relative">
-               <h3 className="phase-header text-2xl font-bold uppercase text-[#8E8E93] transition-colors duration-300 mb-4 bg-[#1A1A1E] inline-block pr-4 relative z-10">
-                  [PHASE_03 // QA STRESS SIMULATION]
-               </h3>
-               <p className="text-lg text-[#F5F5F7] leading-relaxed">
-                  Flooding mock data models with simulated concurrent queries to monitor latency spikes, verify database index stability, and stress-test permission locks.
-               </p>
-            </div>
-
-            <div className="relative">
-               <h3 className="phase-header text-2xl font-bold uppercase text-[#8E8E93] transition-colors duration-300 mb-4 bg-[#1A1A1E] inline-block pr-4 relative z-10">
-                  [PHASE_04 // CONTINUOUS PRODUCTION DELIVERY]
-               </h3>
-               <p className="text-lg text-[#F5F5F7] leading-relaxed">
-                  Launching isolated web platforms onto zero-downtime server architecture, ensuring subsequent module updates deploy seamlessly without interrupting active workflows.
-               </p>
-            </div>
-         </div>
+      {/* CTA Box */}
+      <section className="w-full py-20 px-4 md:px-8 border-t border-black/[0.06] bg-white/70 backdrop-blur-md text-center">
+        <div className="container mx-auto max-w-4xl space-y-6">
+          <h2 className="text-3xl md:text-5xl font-black tracking-tight text-zinc-900">
+            Ready to design your custom software architecture?
+          </h2>
+          <p className="text-zinc-600 max-w-xl mx-auto">
+            Book an engineering consultation to review your technical blueprints and database schemas.
+          </p>
+          <div className="pt-2">
+            <MagneticButton href="/connect" variant="primary">
+              Schedule Technical Consultation 🚀
+            </MagneticButton>
+          </div>
+        </div>
       </section>
     </div>
   );
