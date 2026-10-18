@@ -85,7 +85,6 @@ export default function RootLayout({
           }}
         />
       </head>
-      <Analytics />
       <body
         className={`${outfit.variable} ${jetbrainsMono.variable} font-sans antialiased min-h-screen flex flex-col bg-[#FAFAFA] text-zinc-900 bg-radial-dots selection:bg-blue-600 selection:text-white`}
       >
@@ -107,6 +106,7 @@ export default function RootLayout({
           <Footer />
           <CookieConsentBanner />
         </GSAPProvider>
+        <Analytics />
       </body>
     </html>
   );
