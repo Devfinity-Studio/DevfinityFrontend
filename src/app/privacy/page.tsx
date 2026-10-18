@@ -3,8 +3,16 @@ import { LegalLayout } from "@/components/LegalLayout";
 import { ShieldCheck, Mail, AlertTriangle, UserCheck, Trash2, Lock } from "lucide-react";
 
 export const metadata: Metadata = {
-  title: "Privacy Policy | Devfinity Studio",
+  title: "Privacy Policy",
   description: "Devfinity's data protection commitment, privacy governance, data deletion procedures, and GDPR/CCPA compliance.",
+  alternates: {
+    canonical: "/privacy",
+  },
+  openGraph: {
+    title: "Privacy Policy | Devfinity Studio",
+    description: "Devfinity's data protection commitment, privacy governance, data deletion procedures, and GDPR/CCPA compliance.",
+    url: "https://devfinity.net/privacy",
+  },
 };
 
 export default function PrivacyPage() {

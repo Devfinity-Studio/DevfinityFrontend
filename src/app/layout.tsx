@@ -39,9 +39,6 @@ export const metadata: Metadata = {
   authors: [{ name: "Heena" }, { name: "Devansh" }],
   creator: "Devfinity Studio",
   publisher: "Devfinity Studio",
-  alternates: {
-    canonical: "/",
-  },
   openGraph: {
     type: "website",
     locale: "en_US",

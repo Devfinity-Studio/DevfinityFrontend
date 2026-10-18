@@ -3,8 +3,16 @@ import { LegalLayout } from "@/components/LegalLayout";
 import { Scale, CheckCircle2, ShieldAlert, Award, FileCode2 } from "lucide-react";
 
 export const metadata: Metadata = {
-  title: "Terms of Service | Devfinity Studio",
+  title: "Terms of Service",
   description: "Devfinity's terms of service, bespoke engineering scope, code ownership transfer guarantees, and liability limitations.",
+  alternates: {
+    canonical: "/terms",
+  },
+  openGraph: {
+    title: "Terms of Service | Devfinity Studio",
+    description: "Devfinity's terms of service, bespoke engineering scope, code ownership transfer guarantees, and liability limitations.",
+    url: "https://devfinity.net/terms",
+  },
 };
 
 export default function TermsPage() {

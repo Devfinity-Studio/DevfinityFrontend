@@ -3,8 +3,16 @@ import { LegalLayout } from "@/components/LegalLayout";
 import { Building2, Mail, MapPin, Phone, ShieldCheck, UserCheck, FileText } from "lucide-react";
 
 export const metadata: Metadata = {
-  title: "Legal Notice & Impressum | Devfinity Studio",
+  title: "Legal Notice & Impressum",
   description: "Official Devfinity business identity, registered address, executive leadership, tax details, and legal disclosures.",
+  alternates: {
+    canonical: "/legal",
+  },
+  openGraph: {
+    title: "Legal Notice & Impressum | Devfinity Studio",
+    description: "Official Devfinity business identity, registered address, executive leadership, tax details, and legal disclosures.",
+    url: "https://devfinity.net/legal",
+  },
 };
 
 export default function LegalNoticePage() {

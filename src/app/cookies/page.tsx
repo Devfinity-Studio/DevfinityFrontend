@@ -3,8 +3,16 @@ import { LegalLayout } from "@/components/LegalLayout";
 import { Cookie, CheckCircle2, Shield, Settings, Sliders } from "lucide-react";
 
 export const metadata: Metadata = {
-  title: "Cookie Policy | Devfinity Studio",
+  title: "Cookie Policy",
   description: "Devfinity's transparent cookie policy, category classifications, telemetry opt-out guidance, and consent controls.",
+  alternates: {
+    canonical: "/cookies",
+  },
+  openGraph: {
+    title: "Cookie Policy | Devfinity Studio",
+    description: "Devfinity's transparent cookie policy, category classifications, telemetry opt-out guidance, and consent controls.",
+    url: "https://devfinity.net/cookies",
+  },
 };
 
 export default function CookiesPage() {

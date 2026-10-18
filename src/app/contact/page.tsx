@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import ConnectClient from "@/components/ConnectClient";
 
 export const metadata: Metadata = {
-  title: "Contact & Intake Terminal | Initialize System Deployment",
+  title: "Contact & Intake Terminal — System Deployment",
   description: "Connect with Devfinity. Submit your software infrastructure blueprints to our engineering team for high-performance web platforms and bespoke systems.",
   alternates: {
     canonical: "/contact",
