@@ -7,6 +7,7 @@ import { GSAPProvider } from "@/components/GSAPProvider";
 import { CustomCursor } from "@/components/CustomCursor";
 import { AmbientMesh } from "@/components/AmbientMesh";
 import { CookieConsentBanner } from "@/components/CookieConsentBanner";
+import { Analytics } from "@vercel/analytics/next"
 
 const outfit = Outfit({
   variable: "--font-outfit",
@@ -84,6 +85,7 @@ export default function RootLayout({
           }}
         />
       </head>
+      <Analytics />
       <body
         className={`${outfit.variable} ${jetbrainsMono.variable} font-sans antialiased min-h-screen flex flex-col bg-[#FAFAFA] text-zinc-900 bg-radial-dots selection:bg-blue-600 selection:text-white`}
       >
