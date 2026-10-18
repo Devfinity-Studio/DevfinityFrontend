@@ -7,6 +7,8 @@ import { Sparkles, CheckCircle2, ArrowRight } from "lucide-react";
 import { FeaturedProjectsSection } from "@/components/FeaturedProjectsSection";
 import { StatCounters } from "@/components/StatCounters";
 import { MagneticButton } from "@/components/MagneticButton";
+import { TrustBanner } from "@/components/TrustBanner";
+import { UserCheck, Calendar, ShieldCheck } from "lucide-react";
 
 export default function WorkClient() {
   const containerRef = useRef<HTMLDivElement>(null);
@@ -24,17 +26,38 @@ export default function WorkClient() {
     { scope: containerRef }
   );
 
+  const erpSchema = {
+    "@context": "https://schema.org",
+    "@type": ["SoftwareApplication", "TechArticle"],
+    "name": "Virat ShivShakti ERP System Architecture",
+    "headline": "Virat ShivShakti ERP System Architecture — Case Study",
+    "description": "Devfinity engineered the Virat ShivShakti ERP system using the T3 Stack (Next.js App Router, TypeScript, Drizzle ORM, Tailwind CSS) with Kinde role-based authentication.",
+    "applicationCategory": "BusinessApplication",
+    "operatingSystem": "Cloud / Web Browser",
+    "author": [
+      { "@type": "Person", "name": "Heena", "jobTitle": "Lead Systems Architect" },
+      { "@type": "Person", "name": "Devansh", "jobTitle": "Principal Full-Stack Engineer" }
+    ],
+    "publisher": { "@type": "Organization", "name": "Devfinity Studio", "url": "https://devfinity.dev" },
+    "datePublished": "2026-09-15T00:00:00Z",
+    "dateModified": "2026-10-18T00:00:00Z"
+  };
+
   return (
     <div ref={containerRef} className="flex flex-col min-h-screen">
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(erpSchema) }}
+      />
       
       {/* Hero Section */}
-      <section className="relative pt-24 pb-16 md:pt-32 md:pb-20 px-4 md:px-8 text-center overflow-hidden">
+      <section aria-labelledby="work-hero-title" className="relative pt-24 pb-16 md:pt-32 md:pb-20 px-4 md:px-8 text-center overflow-hidden">
         <div className="container mx-auto max-w-4xl space-y-6">
           <div className="work-hero-anim inline-flex items-center space-x-2 px-4 py-1.5 rounded-full bg-blue-50/80 border border-blue-200/60 text-blue-600 text-xs font-mono font-semibold tracking-wider uppercase shadow-xs">
             <Sparkles className="w-3.5 h-3.5" />
             <span>[ 03 / PORTFOLIO &amp; ARCHITECTURAL CASES ]</span>
           </div>
-          <h1 className="work-hero-anim text-5xl md:text-7xl font-black tracking-tighter text-zinc-900 uppercase">
+          <h1 id="work-hero-title" className="work-hero-anim text-5xl md:text-7xl font-black tracking-tighter text-zinc-900 uppercase">
             PRODUCTION <span className="text-gradient-future">DEPLOYMENTS</span>
           </h1>
           <p className="work-hero-anim text-lg md:text-xl text-zinc-600 leading-relaxed max-w-2xl mx-auto">
@@ -43,6 +66,9 @@ export default function WorkClient() {
         </div>
       </section>
 
+      {/* Verified Authority & Trust Banner */}
+      <TrustBanner />
+
       {/* Featured Horizontal Scroll Matrix */}
       <FeaturedProjectsSection />
 
@@ -50,20 +76,37 @@ export default function WorkClient() {
       <StatCounters />
 
       {/* Deep Dive Case Study */}
-      <section className="w-full py-24 px-4 md:px-8 relative z-10">
-        <div className="container mx-auto max-w-5xl glass-panel rounded-3xl p-8 md:p-14 border border-white/80 shadow-2xl space-y-10">
+      <section aria-labelledby="case-study-heading" className="w-full py-24 px-4 md:px-8 relative z-10">
+        <article className="container mx-auto max-w-5xl glass-panel rounded-3xl p-8 md:p-14 border border-white/80 shadow-2xl space-y-10">
           
-          <div className="space-y-4 border-b border-black/[0.06] pb-8">
+          <header className="space-y-4 border-b border-black/[0.06] pb-8">
             <span className="text-xs font-mono font-bold uppercase px-3 py-1 rounded-full bg-emerald-50 text-emerald-600 border border-emerald-200 inline-block">
               Featured Case Study
             </span>
-            <h2 className="text-3xl md:text-4xl font-extrabold text-zinc-900 tracking-tight">
+            <h2 id="case-study-heading" className="text-3xl md:text-4xl font-extrabold text-zinc-900 tracking-tight">
               Virat ShivShakti ERP System Architecture
             </h2>
-            <p className="text-zinc-600 leading-relaxed text-base md:text-lg">
-              A comprehensive full-stack enterprise overhaul engineered by Devfinity. Replaced legacy dispatch spreadsheets with a type-safe T3 Stack platform featuring Kinde authentication, Drizzle ORM schema integrity, and automated inventory logistics across 12 facilities.
+            {/* AIO 40-60 Word Direct Answer */}
+            <p className="text-zinc-700 leading-relaxed text-base md:text-lg bg-blue-50/50 p-4 rounded-2xl border border-blue-100 font-normal">
+              Devfinity engineered the Virat ShivShakti ERP system using the T3 Stack (Next.js App Router, TypeScript, Drizzle ORM, Tailwind CSS) with Kinde role-based authentication. The platform replaced error-prone manual spreadsheets across 12 manufacturing facilities, delivering a 94% operational efficiency improvement and sub-50ms query speeds under peak concurrent load.
             </p>
-          </div>
+
+            {/* Author Provenance & Freshness Signals */}
+            <div className="pt-2 flex flex-wrap items-center gap-4 text-xs font-mono text-zinc-600">
+              <div className="flex items-center gap-1.5">
+                <UserCheck className="w-4 h-4 text-blue-600" />
+                <span>Architected by <strong className="text-zinc-900">Heena &amp; Devansh</strong></span>
+              </div>
+              <div className="flex items-center gap-1.5">
+                <Calendar className="w-4 h-4 text-zinc-500" />
+                <span>Last Verified &amp; Updated: <strong className="text-zinc-900">October 2026</strong></span>
+              </div>
+              <div className="flex items-center gap-1.5 text-emerald-700 bg-emerald-50 px-2.5 py-0.5 rounded-full border border-emerald-200">
+                <ShieldCheck className="w-3.5 h-3.5" />
+                <span>Live in 12 Facilities</span>
+              </div>
+            </div>
+          </header>
 
           <div className="space-y-6">
             <h3 className="text-xl font-bold uppercase text-blue-600 font-mono tracking-tight">
@@ -112,7 +155,7 @@ export default function WorkClient() {
               Build Similar Infrastructure 🚀
             </MagneticButton>
           </div>
-        </div>
+        </article>
       </section>
     </div>
   );

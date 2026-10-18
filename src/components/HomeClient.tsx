@@ -8,6 +8,8 @@ import { Sparkles, ArrowRight } from "lucide-react";
 import { MagneticButton } from "@/components/MagneticButton";
 import { HeroFloating3D } from "@/components/HeroFloating3D";
 import { BentoGridSection } from "@/components/BentoGridSection";
+import { TrustBanner } from "@/components/TrustBanner";
+import { AccordionFAQ } from "@/components/AccordionFAQ";
 
 export default function HomeClient() {
   const containerRef = useRef<HTMLDivElement>(null);
@@ -30,7 +32,7 @@ export default function HomeClient() {
     <div ref={containerRef} className="flex flex-col min-h-screen">
       
       {/* Hero Section */}
-      <section className="relative pt-24 pb-16 md:pt-32 md:pb-24 px-4 md:px-8 overflow-hidden">
+      <section aria-labelledby="hero-title" className="relative pt-24 pb-16 md:pt-32 md:pb-24 px-4 md:px-8 overflow-hidden">
         <div className="container mx-auto max-w-5xl flex flex-col items-center text-center space-y-6">
           
           {/* Eyebrow Badge */}
@@ -40,7 +42,7 @@ export default function HomeClient() {
           </div>
 
           {/* Main Headline */}
-          <h1 className="hero-anim text-5xl sm:text-6xl md:text-7xl lg:text-8xl font-black tracking-tighter text-zinc-900 leading-[1.05] uppercase">
+          <h1 id="hero-title" className="hero-anim text-5xl sm:text-6xl md:text-7xl lg:text-8xl font-black tracking-tighter text-zinc-900 leading-[1.05] uppercase">
             WE BUILD THE DIGITAL{" "}
             <span className="text-gradient-future inline-block">
               FUTURE
@@ -75,16 +77,26 @@ export default function HomeClient() {
         </div>
       </section>
 
+      {/* Verified Authority & Trust Banner */}
+      <TrustBanner />
+
       {/* 3x2 Bento Grid Section */}
       <BentoGridSection />
 
+      {/* Frequently Answered Questions (AIO Structured Data) */}
+      <section aria-label="Frequently Asked Questions" className="w-full py-20 px-4 md:px-8 bg-zinc-50/60 border-t border-black/[0.04]">
+        <div className="container mx-auto max-w-5xl">
+          <AccordionFAQ />
+        </div>
+      </section>
+
       {/* Bottom CTA Strip */}
-      <section className="w-full py-20 px-4 md:px-8 border-t border-black/[0.06] bg-white/60 backdrop-blur-md">
+      <section aria-labelledby="cta-heading" className="w-full py-20 px-4 md:px-8 border-t border-black/[0.06] bg-white/60 backdrop-blur-md">
         <div className="container mx-auto max-w-5xl rounded-3xl p-10 md:p-14 glass-panel border border-white/80 shadow-2xl shadow-blue-500/5 text-center flex flex-col items-center space-y-6">
           <span className="text-xs font-mono text-blue-600 font-bold uppercase tracking-wider">
             [ READY TO SCALE YOUR DIGITAL PLATFORM? ]
           </span>
-          <h2 className="text-3xl md:text-5xl font-black tracking-tight text-zinc-900">
+          <h2 id="cta-heading" className="text-3xl md:text-5xl font-black tracking-tight text-zinc-900">
             Have an ambitious software project? Let&apos;s talk.
           </h2>
           <p className="text-zinc-600 max-w-xl text-base md:text-lg">

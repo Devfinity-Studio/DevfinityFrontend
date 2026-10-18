@@ -4,6 +4,14 @@ import ConnectClient from "@/components/ConnectClient";
 export const metadata: Metadata = {
   title: "Initialize System Deployment | Custom Technical Consultation",
   description: "Submit your software infrastructure blueprints to Devfinity's intake terminal. Secure, structured onboarding for high-performance software projects.",
+  alternates: {
+    canonical: "/connect",
+  },
+  openGraph: {
+    title: "Initialize System Deployment | Custom Technical Consultation",
+    description: "Submit your software infrastructure blueprints to Devfinity's intake terminal.",
+    url: "https://devfinity.dev/connect",
+  },
 };
 
 export default function ConnectPage() {

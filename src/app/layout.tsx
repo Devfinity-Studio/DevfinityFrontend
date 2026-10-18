@@ -20,8 +20,62 @@ const jetbrainsMono = JetBrains_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Devfinity Studio | Creative Web Development & Digital Experiences",
+  metadataBase: new URL("https://devfinity.dev"),
+  title: {
+    default: "Devfinity Studio | Custom Web Development & Enterprise Architectures",
+    template: "%s | Devfinity Studio",
+  },
   description: "Ultra-modern web development studio engineering interactive digital experiences, type-safe full-stack platforms, and bespoke software architectures.",
+  keywords: [
+    "Custom Web Development",
+    "Next.js Development",
+    "Enterprise ERP System",
+    "T3 Stack",
+    "PostgreSQL Relational Design",
+    "Full-Stack Software Studio",
+    "Type-Safe Architecture",
+    "High-Performance Web Platforms",
+  ],
+  authors: [{ name: "Heena" }, { name: "Devansh" }],
+  creator: "Devfinity Studio",
+  publisher: "Devfinity Studio",
+  alternates: {
+    canonical: "/",
+  },
+  openGraph: {
+    type: "website",
+    locale: "en_US",
+    url: "https://devfinity.dev",
+    siteName: "Devfinity Studio",
+    title: "Devfinity Studio | Custom Web Development & Enterprise Architectures",
+    description: "Ultra-modern web development studio engineering interactive digital experiences, type-safe full-stack platforms, and bespoke software architectures.",
+    images: [
+      {
+        url: "/devfinity.png",
+        width: 800,
+        height: 600,
+        alt: "Devfinity Studio Logo",
+      },
+    ],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Devfinity Studio | Custom Web Development & Enterprise Architectures",
+    description: "Ultra-modern software development studio engineering type-safe Next.js platforms, interactive creative web experiences, and low-latency database architectures.",
+    images: ["/devfinity.png"],
+    creator: "@devfinity",
+  },
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+      "max-video-preview": -1,
+      "max-image-preview": "large",
+      "max-snippet": -1,
+    },
+  },
   icons: {
     icon: [
       { url: '/favicons/favicon.ico' },
@@ -52,7 +106,7 @@ export default function RootLayout({
                   "@id": "https://devfinity.dev/#agency",
                   "name": "Devfinity Studio",
                   "url": "https://devfinity.dev",
-                  "image": "https://devfinity.dev/assets/og-brand-anchor.jpg",
+                  "image": "https://devfinity.dev/devfinity.png",
                   "address": {
                     "@type": "PostalAddress",
                     "addressLocality": "Vadodara",
@@ -64,12 +118,31 @@ export default function RootLayout({
                     "latitude": "22.3072",
                     "longitude": "73.1812"
                   },
+                  "founders": [
+                    {
+                      "@type": "Person",
+                      "name": "Heena"
+                    },
+                    {
+                      "@type": "Person",
+                      "name": "Devansh"
+                    }
+                  ],
                   "priceRange": "$$$$",
+                  "email": "info@devfinity.net",
                   "description": "Ultra-modern software development studio engineering type-safe Next.js platforms, interactive creative web experiences, and low-latency database architectures.",
                   "knowsAbout": [
                     "https://en.wikipedia.org/wiki/Web_development",
                     "https://en.wikipedia.org/wiki/TypeScript",
-                    "https://en.wikipedia.org/wiki/User_interface_design"
+                    "https://en.wikipedia.org/wiki/User_interface_design",
+                    "https://en.wikipedia.org/wiki/Next.js",
+                    "https://en.wikipedia.org/wiki/Enterprise_resource_planning",
+                    "https://en.wikipedia.org/wiki/PostgreSQL"
+                  ],
+                  "sameAs": [
+                    "https://github.com",
+                    "https://twitter.com",
+                    "https://linkedin.com"
                   ]
                 },
                 {

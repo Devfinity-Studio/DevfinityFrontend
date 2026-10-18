@@ -63,13 +63,16 @@ export default function ConnectClient() {
     <div className="flex flex-col min-h-screen">
       
       {/* Hero Header */}
-      <section className="relative pt-24 pb-16 md:pt-32 md:pb-20 px-4 md:px-8 text-center overflow-hidden">
+      <section 
+        aria-labelledby="connect-heading" 
+        className="relative pt-24 pb-16 md:pt-32 md:pb-20 px-4 md:px-8 text-center overflow-hidden"
+      >
         <div className="container mx-auto max-w-4xl space-y-6">
           <div className="inline-flex items-center space-x-2 px-4 py-1.5 rounded-full bg-blue-50/80 border border-blue-200/60 text-blue-600 text-xs font-mono font-semibold tracking-wider uppercase shadow-xs">
             <Sparkles className="w-3.5 h-3.5" />
             <span>[ 04 / INTAKE &amp; COLLABORATION ]</span>
           </div>
-          <h1 className="text-5xl md:text-7xl font-black tracking-tighter text-zinc-900 uppercase">
+          <h1 id="connect-heading" className="text-5xl md:text-7xl font-black tracking-tighter text-zinc-900 uppercase">
             INITIALIZE <span className="text-gradient-future">PIPELINE</span>
           </h1>
           <p className="text-lg md:text-xl text-zinc-600 leading-relaxed max-w-2xl mx-auto">
@@ -79,7 +82,13 @@ export default function ConnectClient() {
       </section>
 
       {/* Main Interactive Grid: Form & 3D Particle Mesh */}
-      <section className="w-full pb-24 px-4 md:px-8 relative z-10">
+      <section 
+        aria-labelledby="intake-form-heading" 
+        className="w-full pb-24 px-4 md:px-8 relative z-10"
+      >
+        <h2 id="intake-form-heading" className="sr-only">
+          Engineering Intake Terminal and Direct Contact Channels
+        </h2>
         <div className="container mx-auto max-w-7xl grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
           
           {/* Left Column: Studio Dynamic Form (7 cols) */}
@@ -118,15 +127,21 @@ export default function ConnectClient() {
       </section>
 
       {/* FAQ Section */}
-      <section className="w-full py-24 px-4 md:px-8 border-t border-black/[0.06] bg-white/60 backdrop-blur-md relative z-10">
+      <section 
+        aria-labelledby="connect-faq-heading" 
+        className="w-full py-24 px-4 md:px-8 border-t border-black/[0.06] bg-white/60 backdrop-blur-md relative z-10"
+      >
         <div className="container mx-auto max-w-4xl space-y-12">
           <div className="text-center space-y-3">
             <span className="text-xs font-mono text-blue-600 font-bold uppercase tracking-wider">
               [ FREQUENTLY ASKED QUESTIONS ]
             </span>
-            <h2 className="text-3xl md:text-5xl font-black tracking-tight text-zinc-900">
+            <h2 id="connect-faq-heading" className="text-3xl md:text-5xl font-black tracking-tight text-zinc-900">
               Clear Answers for Engineering Leaders
             </h2>
+            <p className="text-zinc-600 text-sm max-w-2xl mx-auto leading-relaxed">
+              Devfinity provides structured software onboarding with enterprise-grade non-disclosure agreements, direct engineering access via GitHub and Slack, and full source code IP ownership. We eliminate agency overhead by pairing client leadership directly with senior technical architects for high-velocity Next.js and relational database execution.
+            </p>
           </div>
           <AccordionFAQ />
         </div>

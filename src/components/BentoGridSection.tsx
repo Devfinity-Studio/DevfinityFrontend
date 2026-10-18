@@ -58,28 +58,29 @@ export function BentoGridSection() {
   ];
 
   return (
-    <section className="w-full py-24 px-4 md:px-8 relative z-10" id="who-we-are">
+    <section aria-labelledby="bento-heading" className="w-full py-24 px-4 md:px-8 relative z-10" id="who-we-are">
       <div className="container mx-auto max-w-7xl">
         
         {/* Section Header */}
-        <div className="flex flex-col items-center text-center space-y-4 mb-16">
+        <header className="flex flex-col items-center text-center space-y-4 mb-16">
           <div className="inline-flex items-center space-x-2 px-3.5 py-1.5 rounded-full bg-blue-50/80 border border-blue-200/60 text-blue-600 text-xs font-mono font-semibold tracking-wider uppercase shadow-xs">
             <Sparkles className="w-3.5 h-3.5" />
             <span>[ 01 / ARSENAL &amp; BLUEPRINT ]</span>
           </div>
-          <h2 className="text-4xl md:text-5xl font-extrabold tracking-tighter text-zinc-900">
+          <h2 id="bento-heading" className="text-4xl md:text-5xl font-extrabold tracking-tighter text-zinc-900">
             Who We Are &amp; What We Use
           </h2>
-          <p className="max-w-2xl text-base md:text-lg text-zinc-600 leading-relaxed">
-            We replace bloated templates with high-performance, tailor-made code. Every component is engineered to withstand scale with tactile, micro-animated responsiveness.
+          {/* AIO Answer-First Summary */}
+          <p className="max-w-3xl text-base md:text-lg text-zinc-700 leading-relaxed font-normal bg-blue-50/50 p-4 rounded-2xl border border-blue-100">
+            Devfinity is an ultra-modern software engineering studio specializing in bespoke Next.js platforms, type-safe full-stack architectures, and custom enterprise ERPs. We eliminate brittle templates in favor of resilient server components, deeply indexed PostgreSQL schemas, and granular role-based authentication, delivering sub-150ms interaction latency with full codebase and intellectual property ownership.
           </p>
-        </div>
+        </header>
 
         {/* 3x2 Bento Grid */}
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
           
           {/* Card 1: Interactive Tech Stack Card (Spans 2 columns on desktop) */}
-          <div className="md:col-span-2 glass-card rounded-3xl p-8 flex flex-col justify-between relative overflow-hidden group">
+          <article className="md:col-span-2 glass-card rounded-3xl p-8 flex flex-col justify-between relative overflow-hidden group">
             <div className="flex items-center justify-between mb-6">
               <div className="flex items-center space-x-3">
                 <div className="w-10 h-10 rounded-2xl bg-blue-500/10 text-blue-600 flex items-center justify-center">
@@ -134,10 +135,10 @@ export function BentoGridSection() {
                 Zero Runtime Crashes
               </span>
             </div>
-          </div>
+          </article>
 
           {/* Card 2: Operational Latency Benchmark */}
-          <div className="glass-card rounded-3xl p-8 flex flex-col justify-between group">
+          <article className="glass-card rounded-3xl p-8 flex flex-col justify-between group">
             <div className="flex items-center justify-between">
               <div className="w-10 h-10 rounded-2xl bg-purple-500/10 text-purple-600 flex items-center justify-center">
                 <Activity className="w-5 h-5" />
@@ -158,10 +159,10 @@ export function BentoGridSection() {
               <div className="w-2 h-2 rounded-full bg-purple-500 animate-pulse" />
               Zero Cumulative Layout Shift
             </div>
-          </div>
+          </article>
 
           {/* Card 3: Type Safety & Architecture */}
-          <div className="glass-card rounded-3xl p-8 flex flex-col justify-between group">
+          <article className="glass-card rounded-3xl p-8 flex flex-col justify-between group">
             <div className="flex items-center justify-between">
               <div className="w-10 h-10 rounded-2xl bg-emerald-500/10 text-emerald-600 flex items-center justify-center">
                 <Terminal className="w-5 h-5" />
@@ -181,10 +182,10 @@ export function BentoGridSection() {
             <div className="p-3 rounded-xl bg-emerald-50/60 border border-emerald-200/40 text-xs font-mono text-emerald-700">
               $ tsc --noEmit: Passed (0 Errors)
             </div>
-          </div>
+          </article>
 
           {/* Card 4: Blueprint & Code Architecture Preview (Spans 2 columns on desktop) */}
-          <div className="md:col-span-2 glass-card rounded-3xl p-8 flex flex-col justify-between group relative overflow-hidden">
+          <article className="md:col-span-2 glass-card rounded-3xl p-8 flex flex-col justify-between group relative overflow-hidden">
             <div className="flex items-center justify-between mb-4">
               <div className="flex items-center space-x-3">
                 <div className="w-10 h-10 rounded-2xl bg-amber-500/10 text-amber-600 flex items-center justify-center">
@@ -224,7 +225,7 @@ export function BentoGridSection() {
               <span>Ready for production workloads</span>
               <span className="text-blue-600 font-bold">91+ Deployments Shipped</span>
             </div>
-          </div>
+          </article>
         </div>
       </div>
     </section>

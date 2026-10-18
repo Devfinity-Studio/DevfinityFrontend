@@ -159,7 +159,7 @@ export function FeaturedProjectsSection() {
                 key={project.id}
                 className="snap-start snap-always shrink-0 w-[85vw] sm:w-[75vw] md:w-[480px] lg:w-[520px] xl:w-[560px] min-w-[80vw] md:min-w-[420px] flex flex-col"
               >
-                <div
+                <article
                   className={`rounded-3xl p-6 md:p-8 flex flex-col justify-between h-full group hover:shadow-2xl transition-all duration-300 relative overflow-hidden border ${
                     project.visualType === "clinical"
                       ? "bg-gradient-to-br from-white/95 via-sky-50/40 to-blue-50/30 border-sky-200/80 shadow-lg shadow-sky-500/5 hover:border-sky-400"
@@ -356,7 +356,7 @@ export function FeaturedProjectsSection() {
                       View Case Study <ExternalLink className="w-3.5 h-3.5" />
                     </Link>
                   </div>
-                </div>
+                </article>
               </div>
             );
           })}
