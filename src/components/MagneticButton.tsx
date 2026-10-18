@@ -91,13 +91,19 @@ export function MagneticButton({
           className="absolute -inset-1 rounded-full bg-gradient-to-r from-blue-500 via-purple-500 to-pink-500 blur-lg opacity-0 pointer-events-none transition-opacity duration-300"
         />
       )}
-      <button
-        type="button"
-        onClick={onClick}
-        className={`${baseStyles} ${variantStyles[variant]}`}
-      >
-        {children}
-      </button>
+      {href ? (
+        <span className={`${baseStyles} ${variantStyles[variant]}`}>
+          {children}
+        </span>
+      ) : (
+        <button
+          type="button"
+          onClick={onClick}
+          className={`${baseStyles} ${variantStyles[variant]}`}
+        >
+          {children}
+        </button>
+      )}
     </div>
   );
 

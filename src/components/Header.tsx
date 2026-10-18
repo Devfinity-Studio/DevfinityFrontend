@@ -17,6 +17,13 @@ export function Header() {
     { name: "Contact", href: "/contact" },
   ];
 
+  const isLinkActive = (href: string) => {
+    if (href === "/contact" || href === "/connect") {
+      return pathname === "/contact" || pathname === "/connect";
+    }
+    return pathname === href;
+  };
+
   return (
     <header className="sticky top-0 z-50 w-full border-b border-black/[0.06] bg-white/75 backdrop-blur-md supports-[backdrop-filter]:bg-white/60 transition-all duration-300">
       <div className="container flex h-20 items-center justify-between px-4 mx-auto md:px-8">
@@ -39,7 +46,7 @@ export function Header() {
         {/* Desktop Navigation Links with animated hover underline */}
         <nav className="hidden md:flex items-center space-x-1 p-1.5 rounded-full bg-black/[0.03] border border-black/[0.05]">
           {navigation.map((item) => {
-            const isActive = pathname === item.href;
+            const isActive = isLinkActive(item.href);
             return (
               <Link
                 key={item.href}
@@ -62,7 +69,7 @@ export function Header() {
 
         {/* Right CTA Button */}
         <div className="hidden md:flex items-center">
-          <MagneticButton href="/connect" variant="primary">
+          <MagneticButton href="/contact" variant="primary">
             Let&apos;s Build 🚀
           </MagneticButton>
         </div>
@@ -84,7 +91,7 @@ export function Header() {
         <div className="md:hidden border-b border-black/[0.06] bg-white/95 backdrop-blur-xl animate-in slide-in-from-top-2 duration-200">
           <div className="space-y-1.5 px-6 py-4">
             {navigation.map((item) => {
-              const isActive = pathname === item.href;
+              const isActive = isLinkActive(item.href);
               return (
                 <Link
                   key={item.href}
@@ -102,7 +109,7 @@ export function Header() {
             })}
             <div className="pt-3">
               <Link
-                href="/connect"
+                href="/contact"
                 onClick={() => setIsOpen(false)}
                 className="w-full inline-flex items-center justify-center font-mono font-medium rounded-full px-6 py-3 text-sm bg-gradient-to-r from-blue-600 via-indigo-600 to-purple-600 text-white shadow-md shadow-blue-500/25"
               >
