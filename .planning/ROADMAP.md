@@ -61,3 +61,22 @@
     - Authentic Social Proof: Ground all representations in verified Devfinity case studies (AsmeePharma, Virat ShivShakti ERP, Rustechnet).
     - Developer Audit Checklist: Verification of 3rd-party tracking scripts, email unsubscribe compliance, asset commercial licensing, and database logging minimization.
 
+## Phase 7: Technical SEO & Generative Engine Optimization (AIO/GEO) Architecture
+- **Goal:** Upgrade the Devfinity website's Next.js/React codebase to rank on traditional search engines (Google) and be cited by AI Answer Engines (ChatGPT, Perplexity, Google AI Overviews), maximizing Google Ads Quality Score, lowering CPC, and boosting organic and AI referral conversions.
+- **Deliverables:**
+  - **1. Semantic HTML & Technical SEO Foundation:**
+    - Semantic Tags: Replace generic `<div>` wrappers across layout and page sections with strict semantic HTML5 tags (`<header>`, `<nav>`, `<main>`, `<section>`, `<article>`, `<aside>`, `<footer>`) to establish clear page hierarchy for AI crawlers.
+    - Next.js Metadata API: Implement dynamic `generateMetadata` / comprehensive metadata definitions across all pages with dynamic titles, meta descriptions, OpenGraph tags (`og:title`, `og:description`, `og:image`, `og:type`), Twitter cards, and canonical URLs for every route.
+    - Performance & Core Web Vitals: Ensure all images use Next.js `<Image>` with WebP/AVIF formatting, responsive sizing, and lazy loading. Ensure above-the-fold Hero images have the `priority` attribute to optimize LCP (Largest Contentful Paint).
+  - **2. AIO (Artificial Intelligence Optimization) Content Structure:**
+    - Answer-First Format: Under every `<h2>` heading on the Services and Work pages, write a 40-60 word direct, definitive answer/summary immediately without fluff or jargon.
+    - Extraction UI: Structure content into bulleted lists for features, numbered lists for processes, and Markdown-style scannable comparison tables favored by AI retrieval systems.
+    - Conversational FAQ Sections: Implement sleek, accordion-style FAQ components at the bottom of Home (`/`) and Services (`/services`) targeting natural prompts clients ask AI (e.g. enterprise ERP tech stacks, Next.js healthcare compliance, performance benchmarks).
+  - **3. Advanced JSON-LD Schema Markup:**
+    - Organization Schema: On Home and About pages detailing official entity name, founders (Heena & Devansh), logo URL, social links, contact info, and knownAbout topics.
+    - FAQPage Schema: Inject dynamic `<script type="application/ld+json">` blocks wrapping all FAQ components so search and AI engines can parse exact Q&A pairs.
+    - CreativeWork / SoftwareApplication Schema: On `/work` and `/projects/[id]` portfolio case studies (AsmeePharma, Virat ShivShakti ERP, Rustechnet), detailing tech stack, application category, and industry served.
+  - **4. Trust & Authority Signals (AI Citation Readiness):**
+    - Visible author attributions, publication dates, and "Last Updated" timestamps on case studies and technical articles.
+    - Trust Banner near top of landing pages highlighting verifiable statistics ("91+ Projects Completed", "99.98% Regulatory Uptime"), client credentials, and explicit mentions of the secure tech stack (PostgreSQL, Kinde Auth, tRPC).
+
