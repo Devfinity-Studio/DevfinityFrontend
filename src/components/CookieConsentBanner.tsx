@@ -13,15 +13,37 @@ interface CookiePreferences {
 
 const STORAGE_KEY = "devfinity_cookie_consent";
 
-function updateGtagConsent(preferences: CookiePreferences) {
-  if (typeof window !== "undefined" && typeof (window as unknown as { gtag?: (...args: unknown[]) => void }).gtag === "function") {
-    (window as unknown as { gtag: (...args: unknown[]) => void }).gtag("consent", "update", {
-      ad_storage: preferences.marketing ? "granted" : "denied",
-      ad_user_data: preferences.marketing ? "granted" : "denied",
-      ad_personalization: preferences.marketing ? "granted" : "denied",
-      analytics_storage: preferences.analytics ? "granted" : "denied",
-    });
+/**
+ * Push Google Consent Mode v2 state directly to GTM dataLayer
+ */
+function pushConsentToDataLayer(
+  command: "default" | "update",
+  adStorage: "granted" | "denied",
+  analyticsStorage: "granted" | "denied"
+) {
+  if (typeof window === "undefined") return;
+
+  window.dataLayer = window.dataLayer || [];
+
+  // 1. Google Consent Mode v2 arguments push for GTM consent engine
+  function gtag(..._args: unknown[]) {
+    window.dataLayer.push(arguments);
   }
+  gtag("consent", command, {
+    ad_storage: adStorage,
+    analytics_storage: analyticsStorage,
+    ad_user_data: adStorage,
+    ad_personalization: adStorage,
+  });
+
+  // 2. Custom event push for GTM triggers and auditing
+  window.dataLayer.push({
+    event: command === "default" ? "consent_default" : "consent_update",
+    ad_storage: adStorage,
+    analytics_storage: analyticsStorage,
+    ad_user_data: adStorage,
+    ad_personalization: adStorage,
+  });
 }
 
 export function CookieConsentBanner() {
@@ -35,9 +57,16 @@ export function CookieConsentBanner() {
       const stored = localStorage.getItem(STORAGE_KEY);
       if (stored) {
         const parsed: CookiePreferences = JSON.parse(stored);
-        updateGtagConsent(parsed);
+        pushConsentToDataLayer(
+          "update",
+          parsed.marketing ? "granted" : "denied",
+          parsed.analytics ? "granted" : "denied"
+        );
         return;
       }
+
+      // On initial load (before consent), push a default state to the dataLayer with denied permissions
+      pushConsentToDataLayer("default", "denied", "denied");
 
       // Check Do-Not-Track or Global Privacy Control
       const dnt =
@@ -55,7 +84,6 @@ export function CookieConsentBanner() {
           timestamp: Date.now(),
         };
         localStorage.setItem(STORAGE_KEY, JSON.stringify(defaultConsent));
-        updateGtagConsent(defaultConsent);
         return;
       }
 
@@ -67,15 +95,19 @@ export function CookieConsentBanner() {
       return () => clearTimeout(timer);
     } catch {
       // In private browsing without localStorage access
+      pushConsentToDataLayer("default", "denied", "denied");
     }
   }, []);
 
   const savePreferences = (preferences: CookiePreferences) => {
+    const adStorage = preferences.marketing ? "granted" : "denied";
+    const analyticsStorage = preferences.analytics ? "granted" : "denied";
     try {
       localStorage.setItem(STORAGE_KEY, JSON.stringify(preferences));
-      updateGtagConsent(preferences);
+      pushConsentToDataLayer("update", adStorage, analyticsStorage);
     } catch {
       // Graceful fallback
+      pushConsentToDataLayer("update", adStorage, analyticsStorage);
     }
     setIsVisible(false);
     setShowCustomize(false);

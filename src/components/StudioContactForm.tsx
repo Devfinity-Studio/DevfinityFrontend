@@ -66,7 +66,7 @@ export function StudioContactForm() {
 
     try {
       // Dispatch API request asynchronously with captured UTM ad attribution
-      fetch("/api/contact", {
+      const res = await fetch("/api/contact", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
@@ -76,12 +76,20 @@ export function StudioContactForm() {
           briefing: trimmedMessage,
           ...utm,
         }),
-      }).catch((err) => {
-        console.warn("Dispatched contact intake notice:", err);
       });
 
-      // Wait 1.5 seconds simulated loading state
-      await new Promise((resolve) => setTimeout(resolve, 1500));
+      if (!res.ok) {
+        throw new Error(`Submission failed with status: ${res.status}`);
+      }
+
+      // Immediately push custom conversion event to the dataLayer on 200 Success response
+      if (typeof window !== "undefined") {
+        window.dataLayer = window.dataLayer || [];
+        window.dataLayer.push({ event: "lead_form_submitted" });
+      }
+
+      // Brief delay for seamless animation timing
+      await new Promise((resolve) => setTimeout(resolve, 800));
 
       // 4. Clear form inputs
       setName("");
@@ -110,6 +118,7 @@ export function StudioContactForm() {
       }, 5000);
     } catch (err) {
       console.error("Submission unexpected error:", err);
+      setValidationError("Failed to submit briefing. Please try again or reach out to info@devfinity.net.");
     } finally {
       setIsSending(false);
     }
