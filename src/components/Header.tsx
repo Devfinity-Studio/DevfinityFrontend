@@ -1,6 +1,7 @@
 "use client";
 
 import Link from "next/link";
+import Image from "next/image";
 import { usePathname } from "next/navigation";
 import { useState } from "react";
 import { Menu, X, Sparkles } from "lucide-react";
@@ -30,8 +31,15 @@ export function Header() {
         
         {/* Brand Logo */}
         <Link href="/" className="flex items-center space-x-2.5 group select-none">
-          <div className="w-10 h-10 rounded-xl bg-gradient-to-tr from-blue-600 via-indigo-600 to-purple-600 flex items-center justify-center text-white shadow-md shadow-blue-500/20 group-hover:scale-105 transition-transform duration-300">
-            <Sparkles className="h-5 w-5 animate-pulse" />
+          <div className="relative w-10 h-10 rounded-xl bg-white border border-black/[0.08] shadow-xs flex items-center justify-center p-1 group-hover:border-blue-500/40 group-hover:shadow-md group-hover:shadow-blue-500/10 transition-all duration-300 overflow-hidden">
+            <Image
+              src="/devfinity.png"
+              alt="Devfinity Logo"
+              width={34}
+              height={44}
+              priority
+              className="h-8 w-auto object-contain transition-transform duration-300 group-hover:scale-110"
+            />
           </div>
           <div className="flex flex-col">
             <span className="font-extrabold text-xl tracking-tight text-zinc-900 group-hover:text-blue-600 transition-colors">

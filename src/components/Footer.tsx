@@ -1,6 +1,7 @@
 "use client";
 
 import Link from "next/link";
+import Image from "next/image";
 import { Github, Twitter, Linkedin, Heart, Sparkles } from "lucide-react";
 
 export function Footer() {
@@ -31,12 +32,23 @@ export function Footer() {
         
         {/* Brand & Attribution */}
         <div className="flex flex-col items-center md:items-start space-y-2">
-          <div className="flex items-center space-x-2">
-            <span className="font-extrabold text-lg tracking-tight text-zinc-900">Devfinity</span>
-            <span className="text-xs font-mono px-2 py-0.5 rounded-full bg-blue-50 text-blue-600 font-semibold border border-blue-200/60">
-              Studio
-            </span>
-          </div>
+          <Link href="/" className="flex items-center space-x-2.5 group select-none">
+            <div className="relative w-8 h-8 rounded-lg bg-white border border-black/[0.08] shadow-xs flex items-center justify-center p-0.5 group-hover:border-blue-500/40 transition-all duration-300 overflow-hidden">
+              <Image
+                src="/devfinity.png"
+                alt="Devfinity Logo"
+                width={26}
+                height={34}
+                className="h-6 w-auto object-contain transition-transform duration-300 group-hover:scale-110"
+              />
+            </div>
+            <div className="flex items-center space-x-2">
+              <span className="font-extrabold text-lg tracking-tight text-zinc-900 group-hover:text-blue-600 transition-colors">Devfinity</span>
+              <span className="text-xs font-mono px-2 py-0.5 rounded-full bg-blue-50 text-blue-600 font-semibold border border-blue-200/60">
+                Studio
+              </span>
+            </div>
+          </Link>
           <p className="text-sm text-zinc-500 flex items-center gap-1">
             Engineered with <Heart className="w-3.5 h-3.5 text-rose-500 fill-rose-500" /> by{" "}
             <span className="font-semibold text-zinc-800">Heena &amp; Devansh</span>
