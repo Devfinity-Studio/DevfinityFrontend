@@ -1,6 +1,7 @@
 "use client";
 
 import { useState, useRef, useEffect } from "react";
+import Link from "next/link";
 import confetti from "canvas-confetti";
 import { Send, CheckCircle2, Loader2, Sparkles, X, AlertCircle } from "lucide-react";
 
@@ -9,6 +10,7 @@ export function StudioContactForm() {
   const [email, setEmail] = useState("");
   const [scope, setScope] = useState("Enterprise Platform");
   const [message, setMessage] = useState("");
+  const [hasConsent, setHasConsent] = useState(false);
 
   const [isSending, setIsSending] = useState(false);
   const [validationError, setValidationError] = useState<string | null>(null);
@@ -50,6 +52,12 @@ export function StudioContactForm() {
       return;
     }
 
+    // Consent validation
+    if (!hasConsent) {
+      setValidationError("Please consent to the processing of your details to proceed.");
+      return;
+    }
+
     // 3. Simulated loading state
     setIsSending(true);
 
@@ -76,6 +84,7 @@ export function StudioContactForm() {
       setEmail("");
       setMessage("");
       setScope("Enterprise Platform");
+      setHasConsent(false);
 
       // 5. Festive celebratory confetti
       confetti({
@@ -214,6 +223,26 @@ export function StudioContactForm() {
               }}
               className="w-full px-4 py-3 rounded-2xl bg-white/90 border border-zinc-200 text-zinc-900 placeholder-zinc-400 text-sm focus:outline-none focus:ring-2 focus:ring-blue-500/40 focus:border-blue-500 transition-all shadow-xs resize-none"
             />
+          </div>
+
+          {/* Privacy Consent Checkbox */}
+          <div className="flex items-start space-x-3 pt-1">
+            <input
+              id="contact-consent"
+              type="checkbox"
+              checked={hasConsent}
+              onChange={(e) => {
+                setHasConsent(e.target.checked);
+                if (validationError) setValidationError(null);
+              }}
+              className="mt-1 h-4 w-4 rounded-md border-zinc-300 text-blue-600 focus:ring-2 focus:ring-blue-500 cursor-pointer shrink-0"
+            />
+            <label htmlFor="contact-consent" className="text-xs text-zinc-600 leading-relaxed cursor-pointer select-none">
+              I consent to the collection and processing of my details to handle this inquiry in accordance with Devfinity&apos;s{" "}
+              <Link href="/privacy" target="_blank" className="text-blue-600 font-semibold underline underline-offset-2 hover:text-blue-700">
+                Privacy Policy
+              </Link>.
+            </label>
           </div>
 
           {/* Validation Feedback */}

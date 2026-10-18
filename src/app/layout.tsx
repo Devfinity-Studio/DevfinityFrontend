@@ -6,6 +6,7 @@ import { Footer } from "@/components/Footer";
 import { GSAPProvider } from "@/components/GSAPProvider";
 import { CustomCursor } from "@/components/CustomCursor";
 import { AmbientMesh } from "@/components/AmbientMesh";
+import { CookieConsentBanner } from "@/components/CookieConsentBanner";
 
 const outfit = Outfit({
   variable: "--font-outfit",
@@ -86,14 +87,23 @@ export default function RootLayout({
       <body
         className={`${outfit.variable} ${jetbrainsMono.variable} font-sans antialiased min-h-screen flex flex-col bg-[#FAFAFA] text-zinc-900 bg-radial-dots selection:bg-blue-600 selection:text-white`}
       >
+        {/* WCAG Skip to Main Content Link for Screen Readers & Keyboard Users */}
+        <a
+          href="#main-content"
+          className="sr-only focus:not-sr-only focus:fixed focus:top-4 focus:left-4 focus:z-50 focus:px-4 focus:py-2 focus:bg-blue-600 focus:text-white focus:rounded-xl focus:shadow-xl focus:font-mono focus:text-xs focus:ring-2 focus:ring-white"
+        >
+          Skip to main content
+        </a>
+
         <GSAPProvider>
           <CustomCursor />
           <AmbientMesh />
           <Header />
-          <main className="flex-1 relative z-10">
+          <main id="main-content" className="flex-1 relative z-10" tabIndex={-1}>
             {children}
           </main>
           <Footer />
+          <CookieConsentBanner />
         </GSAPProvider>
       </body>
     </html>

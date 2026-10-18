@@ -17,8 +17,17 @@ function ClipboardContact({ label, value, icon: Icon }: { label: string; value: 
 
   return (
     <div
+      role="button"
+      tabIndex={0}
+      aria-label={`Copy ${label}: ${value}`}
       onClick={handleCopy}
-      className="p-4 rounded-2xl glass-card flex items-center justify-between cursor-pointer group hover:border-blue-500/40 select-none"
+      onKeyDown={(e) => {
+        if (e.key === "Enter" || e.key === " ") {
+          e.preventDefault();
+          handleCopy();
+        }
+      }}
+      className="p-4 rounded-2xl glass-card flex items-center justify-between cursor-pointer group hover:border-blue-500/40 select-none focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-500"
       data-cursor="view"
     >
       <div className="flex items-center space-x-3">

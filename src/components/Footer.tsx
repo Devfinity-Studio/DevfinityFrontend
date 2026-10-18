@@ -36,7 +36,7 @@ export function Footer() {
             <div className="relative w-8 h-8 rounded-lg bg-white border border-black/[0.08] shadow-xs flex items-center justify-center p-0.5 group-hover:border-blue-500/40 transition-all duration-300 overflow-hidden">
               <Image
                 src="/devfinity.png"
-                alt="Devfinity Logo"
+                alt="Devfinity official brand logo"
                 width={26}
                 height={34}
                 className="h-6 w-auto object-contain transition-transform duration-300 group-hover:scale-110"
@@ -49,7 +49,7 @@ export function Footer() {
               </span>
             </div>
           </Link>
-          <p className="text-sm text-zinc-500 flex items-center gap-1">
+          <p className="text-sm text-zinc-600 flex items-center gap-1">
             Engineered with <Heart className="w-3.5 h-3.5 text-rose-500 fill-rose-500" /> by{" "}
             <span className="font-semibold text-zinc-800">Heena &amp; Devansh</span>
           </p>
@@ -73,12 +73,36 @@ export function Footer() {
                 rel="noreferrer"
                 className={`w-10 h-10 rounded-full flex items-center justify-center text-zinc-600 bg-white border border-zinc-200/80 shadow-sm transition-all duration-300 hover:scale-110 hover:-translate-y-0.5 active:scale-95 ${social.glow}`}
                 data-cursor="view"
-                aria-label={social.name}
+                aria-label={`Devfinity on ${social.name}`}
               >
                 <Icon className="w-4 h-4" />
               </a>
             );
           })}
+        </div>
+      </div>
+
+      {/* Secondary Compliance & Ethical Governance Row */}
+      <div className="container mx-auto px-4 md:px-8 mt-8 pt-8 border-t border-black/[0.05] flex flex-col md:flex-row items-center justify-between gap-4 text-xs font-mono text-zinc-600">
+        <div className="flex flex-wrap items-center justify-center md:justify-start gap-x-5 gap-y-2">
+          <Link href="/privacy" className="hover:text-blue-600 transition-colors">
+            Privacy Policy
+          </Link>
+          <Link href="/terms" className="hover:text-blue-600 transition-colors">
+            Terms of Service
+          </Link>
+          <Link href="/refund" className="hover:text-blue-600 transition-colors">
+            Refund Policy
+          </Link>
+          <Link href="/cookies" className="hover:text-blue-600 transition-colors">
+            Cookie Policy
+          </Link>
+          <Link href="/legal" className="hover:text-blue-600 transition-colors">
+            Legal Notice / Impressum
+          </Link>
+        </div>
+        <div className="text-center md:text-right">
+          © 2026 Devfinity Studio. All rights reserved.
         </div>
       </div>
     </footer>

@@ -34,7 +34,7 @@ export function Header() {
           <div className="relative w-10 h-10 rounded-xl bg-white border border-black/[0.08] shadow-xs flex items-center justify-center p-1 group-hover:border-blue-500/40 group-hover:shadow-md group-hover:shadow-blue-500/10 transition-all duration-300 overflow-hidden">
             <Image
               src="/devfinity.png"
-              alt="Devfinity Logo"
+              alt="Devfinity official brand logo"
               width={34}
               height={44}
               priority
@@ -52,7 +52,7 @@ export function Header() {
         </Link>
 
         {/* Desktop Navigation Links with animated hover underline */}
-        <nav className="hidden md:flex items-center space-x-1 p-1.5 rounded-full bg-black/[0.03] border border-black/[0.05]">
+        <nav aria-label="Main navigation" className="hidden md:flex items-center space-x-1 p-1.5 rounded-full bg-black/[0.03] border border-black/[0.05]">
           {navigation.map((item) => {
             const isActive = isLinkActive(item.href);
             return (
@@ -87,7 +87,8 @@ export function Header() {
           <button
             onClick={() => setIsOpen(!isOpen)}
             className="inline-flex items-center justify-center rounded-xl p-2.5 text-zinc-700 hover:bg-black/[0.05] transition-colors focus:outline-none"
-            aria-label="Toggle menu"
+            aria-label={isOpen ? "Close main navigation menu" : "Open main navigation menu"}
+            aria-expanded={isOpen}
           >
             {isOpen ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
           </button>

@@ -81,6 +81,17 @@
     @apply bg-background text-foreground;
     overflow-x: hidden;
   }
+
+  /* WCAG 2.1 AA Compliant Focus Rings for Keyboard Accessibility */
+  button:focus-visible,
+  a:focus-visible,
+  input:focus-visible,
+  select:focus-visible,
+  textarea:focus-visible,
+  [tabindex]:focus-visible {
+    outline: 2px solid #0A84FF !important;
+    outline-offset: 2px !important;
+  }
 }
 
 /* Light Mode Plus Surface Utilities */

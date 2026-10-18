@@ -125,7 +125,7 @@ export function FeaturedProjectsSection() {
                 type="button"
                 onClick={() => handleScroll("left")}
                 disabled={!canScrollLeft}
-                aria-label="Scroll left"
+                aria-label="Scroll projects carousel left"
                 className="w-10 h-10 rounded-full border border-zinc-200 bg-white/90 hover:bg-blue-50 hover:border-blue-300 disabled:opacity-40 disabled:hover:bg-white/90 disabled:hover:border-zinc-200 text-zinc-700 hover:text-blue-600 flex items-center justify-center transition-all shadow-xs cursor-pointer disabled:cursor-not-allowed"
               >
                 <ChevronLeft className="w-5 h-5" />
@@ -134,7 +134,7 @@ export function FeaturedProjectsSection() {
                 type="button"
                 onClick={() => handleScroll("right")}
                 disabled={!canScrollRight}
-                aria-label="Scroll right"
+                aria-label="Scroll projects carousel right"
                 className="w-10 h-10 rounded-full border border-zinc-200 bg-white/90 hover:bg-blue-50 hover:border-blue-300 disabled:opacity-40 disabled:hover:bg-white/90 disabled:hover:border-zinc-200 text-zinc-700 hover:text-blue-600 flex items-center justify-center transition-all shadow-xs cursor-pointer disabled:cursor-not-allowed"
               >
                 <ChevronRight className="w-5 h-5" />
@@ -204,7 +204,7 @@ export function FeaturedProjectsSection() {
                     <Link
                       href={`/projects/${project.id}`}
                       className="w-9 h-9 rounded-full bg-black/[0.04] hover:bg-blue-600 hover:text-white flex items-center justify-center text-zinc-700 transition-colors shrink-0"
-                      aria-label={`View ${project.title} case study`}
+                      aria-label={`View ${project.title} case study specifications`}
                     >
                       <ArrowUpRight className="w-4 h-4" />
                     </Link>
@@ -318,11 +318,11 @@ export function FeaturedProjectsSection() {
                           </div>
                           <div className="p-2 rounded-lg bg-black/60 border border-zinc-800 text-[10px] text-zinc-300 space-y-1">
                             <div className="flex justify-between">
-                              <span className="text-zinc-500">RPC Handshake:</span>
+                              <span className="text-zinc-400">RPC Handshake:</span>
                               <span className="text-emerald-400">12.4ms (p99)</span>
                             </div>
                             <div className="flex justify-between">
-                              <span className="text-zinc-500">Node Sync:</span>
+                              <span className="text-zinc-400">Node Sync:</span>
                               <span className="text-cyan-300">Active WebSocket</span>
                             </div>
                           </div>
@@ -350,6 +350,7 @@ export function FeaturedProjectsSection() {
                     </span>
                     <Link
                       href={`/projects/${project.id}`}
+                      aria-label={`View ${project.title} full case study`}
                       className="text-xs font-mono font-bold text-blue-600 hover:text-blue-700 flex items-center gap-1 group-hover:translate-x-0.5 transition-transform"
                     >
                       View Case Study <ExternalLink className="w-3.5 h-3.5" />
