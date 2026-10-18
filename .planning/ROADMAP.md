@@ -80,3 +80,21 @@
     - Visible author attributions, publication dates, and "Last Updated" timestamps on case studies and technical articles.
     - Trust Banner near top of landing pages highlighting verifiable statistics ("91+ Projects Completed", "99.98% Regulatory Uptime"), client credentials, and explicit mentions of the secure tech stack (PostgreSQL, Kinde Auth, tRPC).
 
+## Phase 8: Enterprise Security, Ad-Readiness, Dynamic OG & The Insights Architecture Hub
+- **Goal:** Fortify Devfinity's enterprise production posture with strict HTTP security headers, Google Consent Mode v2 and URL UTM ad-attribution pipelines, programmatic OpenGraph social image generation (`@vercel/og`), an editorial `/insights` technical deep-dive architecture hub with explicit Devfinity author provenance, and community leadership authority signals (GDG Baroda DevFest 2025, IIT Bombay Techfest Cozmoclench).
+- **Deliverables:**
+  - **1. Infrastructure Security & Ad-Tracking:**
+    - Strict HTTP Security Headers: Content Security Policy (CSP), Strict-Transport-Security (HSTS), X-Frame-Options, X-Content-Type-Options, Referrer-Policy, and Permissions-Policy configured in `next.config.ts`.
+    - Google Consent Mode v2: Connect Cookie Consent Banner to `gtag.js` Consent Mode v2 dispatching `ad_storage`, `ad_user_data`, `ad_personalization`, and `analytics_storage` status.
+    - UTM Attribution Capture: Client-side URL hook capturing `utm_source`, `utm_campaign`, `utm_medium`, `utm_term`, and `utm_content` automatically injected into contact form submissions and passed to the intake API without page reloads.
+  - **2. Dynamic OpenGraph Social Image Generation (`@vercel/og`):**
+    - Programmatic social share image generation using Next.js `ImageResponse` for dynamic `/projects/[id]` case studies and `/insights` articles with custom typography, tech stack badges, and Devfinity branding.
+  - **3. Programmatic SEO & The 'Insights' Technical Architecture Hub:**
+    - Dedicated `/insights` hub and individual article routes (`/insights/[slug]`) engineered with Light Mode Plus glassmorphism, semantic article markup, reading times, and Next.js Metadata API.
+    - Explicit Attribution Override: Zero AI tooling mentions; all architectural designs, codebases, and analyses are explicitly authored by Devfinity founders Heena & Devansh.
+    - Seed Technical Deep-Dives:
+      1. *"Migrating Enterprise Systems: Why We Choose the T3 Stack & Kinde Auth Over Vite"*
+      2. *"High-Performance Workflows with Next.js, TypeScript, and Drizzle ORM"*
+  - **4. Community Authority & Leadership Footprint:**
+    - Visually striking 'Community & Leadership' showcase highlighting real-world technical footprint: organizing GDG Baroda DevFest 2025 and robotics competitions at IIT Bombay's Techfest (Cozmoclench).
+
