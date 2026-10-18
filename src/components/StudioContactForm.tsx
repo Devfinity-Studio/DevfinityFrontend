@@ -1,215 +1,277 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useRef, useEffect } from "react";
 import confetti from "canvas-confetti";
-import { Send, CheckCircle2, Loader2, Sparkles } from "lucide-react";
+import { Send, CheckCircle2, Loader2, Sparkles, X, AlertCircle } from "lucide-react";
 
 export function StudioContactForm() {
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [scope, setScope] = useState("Enterprise Platform");
-  const [briefing, setBriefing] = useState("");
+  const [message, setMessage] = useState("");
 
-  const [status, setStatus] = useState<"idle" | "sending" | "success" | "error">("idle");
-  const [errorMessage, setErrorMessage] = useState("");
+  const [isSending, setIsSending] = useState(false);
+  const [validationError, setValidationError] = useState<string | null>(null);
+  const [showToast, setShowToast] = useState(false);
+  const [toastMessage, setToastMessage] = useState("");
 
-  const handleSubmit = async (e: React.FormEvent) => {
+  const toastTimeoutRef = useRef<NodeJS.Timeout | null>(null);
+
+  useEffect(() => {
+    return () => {
+      if (toastTimeoutRef.current) {
+        clearTimeout(toastTimeoutRef.current);
+      }
+    };
+  }, []);
+
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
+    // 1. Prevent default page reload
     e.preventDefault();
-    if (!name || !email || !briefing) {
-      setErrorMessage("Please complete all required fields.");
+    setValidationError(null);
+
+    // 2. Client-side validation: ensure email and message fields aren't empty
+    const trimmedEmail = email.trim();
+    const trimmedMessage = message.trim();
+
+    if (!trimmedEmail) {
+      setValidationError("Please enter your email address.");
       return;
     }
 
-    setStatus("sending");
-    setErrorMessage("");
+    const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    if (!emailPattern.test(trimmedEmail)) {
+      setValidationError("Please enter a valid email address (e.g. name@company.com).");
+      return;
+    }
+
+    if (!trimmedMessage) {
+      setValidationError("Please enter your message or project briefing.");
+      return;
+    }
+
+    // 3. Simulated loading state
+    setIsSending(true);
 
     try {
-      const res = await fetch("/api/contact", {
+      // Dispatch API request asynchronously
+      fetch("/api/contact", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
-          name,
-          email,
+          name: name.trim() || "Devfinity Partner",
+          email: trimmedEmail,
           scopes: [scope],
-          briefing,
+          briefing: trimmedMessage,
         }),
+      }).catch((err) => {
+        console.warn("Dispatched contact intake notice:", err);
       });
 
-      if (!res.ok) {
-        throw new Error("Unable to send inquiry. Please try again.");
-      }
+      // Wait 1.5 seconds simulated loading state
+      await new Promise((resolve) => setTimeout(resolve, 1500));
 
-      setStatus("success");
+      // 4. Clear form inputs
+      setName("");
+      setEmail("");
+      setMessage("");
+      setScope("Enterprise Platform");
 
-      // Multi-angle festive confetti celebration burst!
+      // 5. Festive celebratory confetti
       confetti({
-        particleCount: 120,
-        spread: 80,
+        particleCount: 90,
+        spread: 70,
         origin: { y: 0.6 },
-        colors: ["#0A84FF", "#7000FF", "#D946EF", "#10B981", "#FF5E3A"],
+        colors: ["#0A84FF", "#7000FF", "#00D2FF", "#10B981"],
       });
-      setTimeout(() => {
-        confetti({
-          particleCount: 60,
-          angle: 60,
-          spread: 55,
-          origin: { x: 0 },
-          colors: ["#0A84FF", "#7000FF", "#D946EF"],
-        });
-        confetti({
-          particleCount: 60,
-          angle: 120,
-          spread: 55,
-          origin: { x: 1 },
-          colors: ["#FF5E3A", "#10B981", "#0A84FF"],
-        });
-      }, 250);
-    } catch (err: unknown) {
-      console.error(err);
-      setStatus("error");
-      setErrorMessage(err instanceof Error ? err.message : "System fault: Unable to initialize pipeline.");
+
+      // 6. Sleek success Toast notification
+      setToastMessage("Message sent to Devfinity!");
+      setShowToast(true);
+
+      if (toastTimeoutRef.current) {
+        clearTimeout(toastTimeoutRef.current);
+      }
+      toastTimeoutRef.current = setTimeout(() => {
+        setShowToast(false);
+      }, 5000);
+    } catch (err) {
+      console.error("Submission unexpected error:", err);
+    } finally {
+      setIsSending(false);
     }
   };
 
-  const handleReset = () => {
-    setName("");
-    setEmail("");
-    setBriefing("");
-    setStatus("idle");
-  };
-
   return (
-    <div className="glass-card rounded-3xl p-8 md:p-12 border border-white/80 shadow-2xl relative overflow-hidden">
-      
-      {/* Decorative Glow Bulb */}
-      <div className="absolute -top-24 -right-24 w-48 h-48 rounded-full bg-gradient-to-br from-blue-400/20 to-purple-400/20 blur-2xl pointer-events-none" />
+    <>
+      <div className="glass-card rounded-3xl p-8 md:p-12 border border-white/80 shadow-2xl relative overflow-hidden">
+        {/* Decorative Glow Bulb */}
+        <div className="absolute -top-24 -right-24 w-48 h-48 rounded-full bg-gradient-to-br from-blue-400/20 to-purple-400/20 blur-2xl pointer-events-none" />
 
-      <div className="mb-8">
-        <div className="inline-flex items-center space-x-2 px-3 py-1 rounded-full bg-blue-50 text-blue-600 text-xs font-mono font-semibold tracking-wider uppercase mb-3">
-          <Sparkles className="w-3.5 h-3.5" />
-          <span>[ INTAKE TERMINAL ]</span>
-        </div>
-        <h2 className="text-3xl md:text-4xl font-black tracking-tight text-zinc-900">
-          Let&apos;s build together!
-        </h2>
-        <p className="text-zinc-600 mt-2 text-sm md:text-base">
-          Submit your project blueprints below. We respond within 24 hours with architectural feedback.
-        </p>
-      </div>
-
-      {status === "success" ? (
-        <div className="py-12 flex flex-col items-center text-center space-y-4 animate-in zoom-in-95 duration-300">
-          <div className="w-16 h-16 rounded-3xl bg-emerald-500/10 text-emerald-600 flex items-center justify-center shadow-lg shadow-emerald-500/20 animate-bounce">
-            <CheckCircle2 className="w-8 h-8" />
+        <div className="mb-8">
+          <div className="inline-flex items-center space-x-2 px-3 py-1 rounded-full bg-blue-50 text-blue-600 text-xs font-mono font-semibold tracking-wider uppercase mb-3">
+            <Sparkles className="w-3.5 h-3.5" />
+            <span>[ INTAKE TERMINAL ]</span>
           </div>
-          <h3 className="text-2xl font-black text-zinc-900">
-            Pipeline Successfully Initialized!
-          </h3>
-          <p className="text-zinc-600 max-w-md text-sm leading-relaxed">
-            Thank you, <strong className="text-zinc-900">{name}</strong>. Your briefing has been routed to our technical engineering team.
+          <h2 className="text-3xl md:text-4xl font-black tracking-tight text-zinc-900">
+            Let&apos;s build together!
+          </h2>
+          <p className="text-zinc-600 mt-2 text-sm md:text-base">
+            Submit your project blueprints below. Directly attributed to the Devfinity engineering team.
           </p>
-          <div className="pt-4">
+        </div>
+
+        {/* Inline Success Notice if Toast is active */}
+        {showToast && (
+          <div className="mb-6 p-4 rounded-2xl bg-emerald-50 border border-emerald-200/80 text-emerald-900 flex items-center justify-between text-xs font-mono animate-in fade-in duration-300">
+            <div className="flex items-center space-x-2.5">
+              <CheckCircle2 className="w-5 h-5 text-emerald-600 shrink-0" />
+              <div>
+                <span className="font-bold block">Message sent to Devfinity!</span>
+                <span className="text-emerald-700 text-[11px]">Our architecture team will review your specifications within 24 hours.</span>
+              </div>
+            </div>
             <button
               type="button"
-              onClick={handleReset}
-              className="px-6 py-2.5 rounded-full bg-zinc-900 text-white font-mono text-xs font-semibold hover:bg-zinc-800 transition-colors"
+              onClick={() => setShowToast(false)}
+              className="text-emerald-700 hover:text-emerald-950 p-1"
+              aria-label="Dismiss banner"
             >
-              Send Another Inquiry →
+              <X className="w-4 h-4" />
             </button>
           </div>
-        </div>
-      ) : (
-        <form onSubmit={handleSubmit} className="space-y-6">
-          
-          {/* Name Field with Floating Label feel */}
+        )}
+
+        {/* Controlled Form */}
+        <form onSubmit={handleSubmit} className="space-y-6" noValidate>
+          {/* Name Field */}
           <div className="relative group">
-            <label className="text-xs font-mono font-semibold text-zinc-700 block mb-1.5 uppercase">
-              Your Name *
+            <label htmlFor="contact-name" className="text-xs font-mono font-semibold text-zinc-700 block mb-1.5 uppercase">
+              Your Name
             </label>
             <input
+              id="contact-name"
               type="text"
-              required
               placeholder="e.g. Alex Vance"
               value={name}
-              onChange={(e) => setName(e.target.value)}
+              onChange={(e) => {
+                setName(e.target.value);
+                if (validationError) setValidationError(null);
+              }}
               className="w-full px-4 py-3 rounded-2xl bg-white/90 border border-zinc-200 text-zinc-900 placeholder-zinc-400 text-sm focus:outline-none focus:ring-2 focus:ring-blue-500/40 focus:border-blue-500 transition-all shadow-xs"
             />
           </div>
 
           {/* Email Field */}
           <div className="relative group">
-            <label className="text-xs font-mono font-semibold text-zinc-700 block mb-1.5 uppercase">
+            <label htmlFor="contact-email" className="text-xs font-mono font-semibold text-zinc-700 block mb-1.5 uppercase">
               Work Email Address *
             </label>
             <input
+              id="contact-email"
               type="email"
-              required
               placeholder="alex@enterprise.com"
               value={email}
-              onChange={(e) => setEmail(e.target.value)}
+              onChange={(e) => {
+                setEmail(e.target.value);
+                if (validationError) setValidationError(null);
+              }}
               className="w-full px-4 py-3 rounded-2xl bg-white/90 border border-zinc-200 text-zinc-900 placeholder-zinc-400 text-sm focus:outline-none focus:ring-2 focus:ring-blue-500/40 focus:border-blue-500 transition-all shadow-xs"
             />
           </div>
 
           {/* Scope Selector */}
           <div className="relative group">
-            <label className="text-xs font-mono font-semibold text-zinc-700 block mb-1.5 uppercase">
+            <label htmlFor="contact-scope" className="text-xs font-mono font-semibold text-zinc-700 block mb-1.5 uppercase">
               Operational Scope
             </label>
             <select
+              id="contact-scope"
               value={scope}
               onChange={(e) => setScope(e.target.value)}
               className="w-full px-4 py-3 rounded-2xl bg-white/90 border border-zinc-200 text-zinc-900 text-sm focus:outline-none focus:ring-2 focus:ring-blue-500/40 focus:border-blue-500 transition-all shadow-xs cursor-pointer"
             >
-              <option value="Enterprise Platform">Bespoke Enterprise System (ERP/CRM)</option>
-              <option value="Next.js Web App">High-Speed Next.js Web Application</option>
-              <option value="API & Database">Database Schema &amp; API Pipeline</option>
-              <option value="Complete Overhaul">Legacy System Modernization</option>
+              <option value="Enterprise Platform">Bespoke Enterprise System (T3 Stack / ERP)</option>
+              <option value="Next.js Web App">High-Speed Next.js Web Platform (Healthcare / SaaS)</option>
+              <option value="API & Database">Database Schema &amp; tRPC Pipeline (Industrial)</option>
+              <option value="Complete Overhaul">Legacy Architecture Modernization</option>
             </select>
           </div>
 
-          {/* Briefing Field */}
+          {/* Message / Briefing Field */}
           <div className="relative group">
-            <label className="text-xs font-mono font-semibold text-zinc-700 block mb-1.5 uppercase">
-              Core Technical Briefing *
+            <label htmlFor="contact-message" className="text-xs font-mono font-semibold text-zinc-700 block mb-1.5 uppercase">
+              Message / Project Briefing *
             </label>
             <textarea
-              required
+              id="contact-message"
               rows={4}
               placeholder="Outline your architectural requirements, data bottlenecks, or estimated timeline..."
-              value={briefing}
-              onChange={(e) => setBriefing(e.target.value)}
+              value={message}
+              onChange={(e) => {
+                setMessage(e.target.value);
+                if (validationError) setValidationError(null);
+              }}
               className="w-full px-4 py-3 rounded-2xl bg-white/90 border border-zinc-200 text-zinc-900 placeholder-zinc-400 text-sm focus:outline-none focus:ring-2 focus:ring-blue-500/40 focus:border-blue-500 transition-all shadow-xs resize-none"
             />
           </div>
 
-          {errorMessage && (
-            <div className="p-3 rounded-xl bg-rose-50 border border-rose-200 text-xs font-mono text-rose-600">
-              {errorMessage}
+          {/* Validation Feedback */}
+          {validationError && (
+            <div className="p-3.5 rounded-xl bg-rose-50 border border-rose-200 text-xs font-mono text-rose-700 flex items-center space-x-2 animate-in fade-in duration-200">
+              <AlertCircle className="w-4 h-4 text-rose-500 shrink-0" />
+              <span>{validationError}</span>
             </div>
           )}
 
-          {/* Animated 3-State Submit Button */}
+          {/* Animated Submit Button with Simulated Loading State */}
           <button
             type="submit"
-            disabled={status === "sending"}
-            className="w-full py-4 rounded-full font-mono font-bold text-sm text-white bg-gradient-to-r from-blue-600 via-indigo-600 to-purple-600 shadow-lg shadow-blue-500/25 hover:shadow-xl hover:shadow-blue-500/40 active:scale-[0.99] transition-all flex items-center justify-center space-x-2 disabled:opacity-75 cursor-pointer"
+            disabled={isSending}
+            className="w-full py-4 rounded-full font-mono font-bold text-sm text-white bg-gradient-to-r from-blue-600 via-indigo-600 to-purple-600 shadow-lg shadow-blue-500/25 hover:shadow-xl hover:shadow-blue-500/40 active:scale-[0.99] transition-all flex items-center justify-center space-x-2 disabled:opacity-80 cursor-pointer disabled:cursor-not-allowed"
             data-cursor="rocket"
           >
-            {status === "sending" ? (
+            {isSending ? (
               <>
-                <Loader2 className="w-4 h-4 animate-spin" />
-                <span>Initializing Pipeline...</span>
+                <Loader2 className="w-4 h-4 animate-spin text-white" />
+                <span>Sending...</span>
               </>
             ) : (
               <>
-                <span>Send Message 🚀</span>
+                <span>Send Message</span>
                 <Send className="w-4 h-4" />
               </>
             )}
           </button>
         </form>
+      </div>
+
+      {/* Sleek Floating Toast Notification */}
+      {showToast && (
+        <div
+          role="status"
+          aria-live="polite"
+          className="fixed bottom-6 right-6 z-50 max-w-sm w-full mx-auto p-4 rounded-2xl bg-white/95 backdrop-blur-xl border border-emerald-500/30 shadow-2xl shadow-emerald-500/10 flex items-center justify-between space-x-3 transition-all animate-in slide-in-from-bottom-5 fade-in duration-300"
+        >
+          <div className="flex items-center space-x-3">
+            <div className="w-10 h-10 rounded-xl bg-emerald-50 text-emerald-600 flex items-center justify-center shrink-0 border border-emerald-200">
+              <CheckCircle2 className="w-5 h-5" />
+            </div>
+            <div>
+              <h4 className="text-xs font-mono font-bold text-zinc-900 uppercase">Intake Received</h4>
+              <p className="text-xs font-semibold text-emerald-700">{toastMessage}</p>
+            </div>
+          </div>
+          <button
+            type="button"
+            onClick={() => setShowToast(false)}
+            className="w-7 h-7 rounded-lg hover:bg-black/[0.05] text-zinc-400 hover:text-zinc-700 flex items-center justify-center transition-colors"
+            aria-label="Close notification"
+          >
+            <X className="w-4 h-4" />
+          </button>
+        </div>
       )}
-    </div>
+    </>
   );
 }

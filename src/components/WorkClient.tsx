@@ -58,10 +58,10 @@ export default function WorkClient() {
               Featured Case Study
             </span>
             <h2 className="text-3xl md:text-4xl font-extrabold text-zinc-900 tracking-tight">
-              Shivshakti Agricultural ERP System Architecture
+              Virat ShivShakti ERP System Architecture
             </h2>
             <p className="text-zinc-600 leading-relaxed text-base md:text-lg">
-              A complete overhaul of fragmented dispatch spreadsheets into a centralized, type-safe Next.js platform. We integrated a dedicated Replacement Register and multi-level role authentication for factory administrators.
+              A comprehensive full-stack enterprise overhaul engineered by Devfinity. Replaced legacy dispatch spreadsheets with a type-safe T3 Stack platform featuring Kinde authentication, Drizzle ORM schema integrity, and automated inventory logistics across 12 facilities.
             </p>
           </div>
 
@@ -81,22 +81,22 @@ export default function WorkClient() {
                 </thead>
                 <tbody className="divide-y divide-black/[0.04] text-zinc-800">
                   <tr className="hover:bg-blue-50/30 transition-colors">
-                    <td className="p-4 font-semibold font-mono text-blue-600">PostgreSQL + TypeORM</td>
-                    <td className="p-4 font-mono text-xs text-zinc-600">Monolithic Relational Schemas</td>
+                    <td className="p-4 font-semibold font-mono text-blue-600">T3 Stack + Drizzle ORM</td>
+                    <td className="p-4 font-mono text-xs text-zinc-600">Type-Safe Relational Queries</td>
                     <td className="p-4 font-medium text-emerald-600 flex items-center gap-1.5">
                       <CheckCircle2 className="w-4 h-4" /> Zero schema-drift regressions
                     </td>
                   </tr>
                   <tr className="hover:bg-blue-50/30 transition-colors">
-                    <td className="p-4 font-semibold font-mono text-blue-600">Next.js App Router</td>
-                    <td className="p-4 font-mono text-xs text-zinc-600">Edge Dynamic Rendering</td>
+                    <td className="p-4 font-semibold font-mono text-blue-600">Kinde Authentication</td>
+                    <td className="p-4 font-mono text-xs text-zinc-600">Role-Based Access Control</td>
                     <td className="p-4 font-medium text-emerald-600 flex items-center gap-1.5">
-                      <CheckCircle2 className="w-4 h-4" /> 40% reduction in customer check-out steps
+                      <CheckCircle2 className="w-4 h-4" /> Secure multi-facility permissions
                     </td>
                   </tr>
                   <tr className="hover:bg-blue-50/30 transition-colors">
-                    <td className="p-4 font-semibold font-mono text-blue-600">B-Tree Index Tuning</td>
-                    <td className="p-4 font-mono text-xs text-zinc-600">Concurrent Query Profiling</td>
+                    <td className="p-4 font-semibold font-mono text-blue-600">Next.js App Router</td>
+                    <td className="p-4 font-mono text-xs text-zinc-600">Edge Dynamic Rendering</td>
                     <td className="p-4 font-medium text-emerald-600 flex items-center gap-1.5">
                       <CheckCircle2 className="w-4 h-4" /> Sub-50ms query latency under load
                     </td>
